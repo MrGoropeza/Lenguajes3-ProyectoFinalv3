@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.Master.cs" Inherits="Lenguajes3_ProyectoFinalv3.Inicio" %>
+
+<!DOCTYPE html>
+
+<html>
+<!-- Head del HTML -->
+<head runat="server">
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+    <title>MAS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1,  maximum-scale=1">
+    <meta name="Description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="">
+    <meta name="googlebot" content="">
+    <meta name="google" content="nositelinkssearchbox">
+    <link href="../MedicalAppointmentUI/css/css-styles.css" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" type="image/ico" href="../MedicalAppointmentUI/favicons/7221-img-favicon.ico">
+</head>
+<!-- Fin Head del HTML-->
+
+<body>
+    <!-- Inicio NavBar -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <!--Logo-->
+                <div class="logo">
+                    <a href="HomePage.aspx"><img src="../MedicalAppointmentUI/images/img-logo.png" alt="logo"></a>
+                </div>
+                <!--Logo-->
+
+                <!--Header tools-->
+                <div class="tools-top">
+                    <!--Avatar-->
+                    <div class="avatar-profile">
+                        <div class="user-edit">
+                            <h4>Jeniffer Martinez,</h4>
+                            <a href="AccountPage.aspx"><i class="fa fa-pencil"></i> editar perfil</a>
+                        </div>
+                        <div class="avatar-image">
+                            <img src="../MedicalAppointmentUI/images/img-avatar-profile.jpg" alt="avatar profile" class="img-responsive">
+                        </div>
+                    </div>
+                    <!--Avatar-->
+
+                    <ul class="tools-help">
+                        <li><a href="HomePage.aspx" title="Cerrar Sesión" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+                <!--Header tools-->
+            </div>
+        </div>
+    </header>
+    <!-- Inicio NavBar -->
+
+    <!--Menu-->
+    <nav>
+        <div class="container">
+            <h4 class="navbar-brand">menu</h4>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><i class="fa fa-list-alt"></i> <a href="DashboardPage.aspx"> Tus Turnos</a> </li>
+                    <li> <i class="fa fa-address-book-o"></i> <a href="ReservarPage.aspx"> Reservar un Turno</a> </li>
+                    <li> <i class="fa fa-pencil"></i> <a href="AccountPage.aspx">mi cuenta</a> </li>
+                </ul>
+                <ul class="nav navbar-nav visible-mobile">
+                    <li> <a href="HomePage.aspx">Home Landing Page</a> </li>
+                    <li> <a href="LoginPage.aspx">Login Page</a> </li>
+                    <li> <a href="RegisterPage.aspx">Register Page</a> </li>
+                    <li> <a href="ForgotPasswordPage.aspx">Forgot Password</a> </li>
+                    <li> <a href="AccountPage.aspx">My Account</a> </li>
+                    <li> <a href="ProfessionalsPage.aspx">Find Doctors</a> </li>
+                    <li> <a href="modify-booked-calendar.html">Modify an Appointment</a> </li>
+                    <li> <a href="appointments-reserved-empty.html">Appointments Empty</a> </li>
+                    <li> <a href="404-page.html">Error Page - 404</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Menu-->
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="Contenido" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <!-- Inicio Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="emergency-number">
+                    <p class="phone">(01) + 8000123456</p>
+                    <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
+                </div>
+
+                <div class="emergency-number email">
+                    <p>support@iwthemes.com</p>
+                    <h5>online consultation <i class="fa fa-medkit"></i></h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Inicio Footer -->
+
+    <!--Copyrights-->
+    <div class="copyrights">
+        <p>&copy; 2017 - <a href="http://iwthemes.com/" target="_blank">IwThemes</a>&reg; Envato<img src="../MedicalAppointmentUI/images/img-envalogo.png" alt="envato brand">. Todos los derechos reservados.</p>
+    </div>
+        <!--Copyrights-->
+
+    <asp:ContentPlaceHolder ID="Scripts" runat="server"></asp:ContentPlaceHolder>
+
+    <!-- ======================= JQuery libs =========================== -->
+        <!-- jQuery local-->
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/jquery.js"></script>
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap.js-->
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/bootstrap-sprockets.js"></script>
+</body>
+</html>

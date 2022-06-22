@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Inicio.master.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.Inicio" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+        <asp:ContentPlaceHolder ID="Head" runat="server">
+        </asp:ContentPlaceHolder>
+        <title>MAS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1,  maximum-scale=1">
+        <meta name="Description" content="">
+        <meta name="author" content="">
+        <meta name="robots" content="">
+        <meta name="googlebot" content="">
+        <meta name="google" content="nositelinkssearchbox">
+        <link href="../MedicalAppointmentUI/css/css-styles.css" rel="stylesheet" media="screen">
+        <link rel="shortcut icon" type="image/ico" href="../MedicalAppointmentUI/favicons/8826-img-favicon.ico">
+    </head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="Contenido" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <!-- Inicio Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="emergency-number">
+                    <p runat="server"
+                        id="numero_consul"
+                        class="phone">(01) + 8000123456</p>
+                    <h5><i class="fa fa-phone-square"></i> número de contacto
+                    </h5>
+                </div>
+
+                <div class="emergency-number email">
+                    <p runat="server"
+                        id="correo_consul">support@iwthemes.com</p>
+                    <h5>correo de contacto <i class="fa fa-mail-reply"></i></h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Inicio Footer -->
+
+    <!--Copyrights-->
+    <div class="copyrights">
+        <p>&copy; 2017 - <a href="http://iwthemes.com/" target="_blank">IwThemes</a>&reg; Envato<img src="../MedicalAppointmentUI/images/img-envalogo.png" alt="envato brand">. Todos los derechos reservados.</p>
+    </div>
+        <!--Copyrights-->
+
+    <asp:ContentPlaceHolder ID="Scripts" runat="server"></asp:ContentPlaceHolder>
+
+    <!-- ======================= JQuery libs =========================== -->
+        <!-- jQuery local-->
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/jquery.js"></script>
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap.js-->
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../MedicalAppointmentUI/js/bootstrap-sprockets.js"></script>
+</body>
+</html>
