@@ -11,12 +11,10 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
     {
         #region selects-read
         List<String> getDatosConsultorio();
-        Profesional getProfesional(int dni);
-        List<Profesional> getProfesionales();
-        Paciente getPaciente(int dni);
-        List<Paciente> getPacientes();
-        Admin getAdmin(int dni);
-        List<Admin> getAdmins(int dni);
+        List<Usuario> getProfesionales();
+        Task<Usuario> getUsuario(int dni);
+        List<Usuario> getPacientes();
+        List<Usuario> getAdmins();
         Turno getTurno(DateTime fecha);
         List<Turno> getTurnosProfesional(int dni);
         Consulta getConsultaPaciente(int dni);
@@ -42,7 +40,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         #endregion
 
         #region delete
-
+        void removeUser(Usuario user);
         #endregion
     }
 }

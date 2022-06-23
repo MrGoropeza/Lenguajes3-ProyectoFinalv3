@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using Firebase.Storage;
 
@@ -20,9 +22,11 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             throw new NotImplementedException();
         }
 
-        public string setAvatarLink()
+        public async Task<string> setAvatarLink(Stream file,int dni)
         {
-            throw new NotImplementedException();
+            return await storage.Child("avatars")
+                .Child(dni.ToString())
+                .PutAsync(file);
         }
     }
 }

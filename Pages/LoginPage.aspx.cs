@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lenguajes3_ProyectoFinalv3.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,45 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                logo.InnerText = Consultorio.nombre;
+                try
+                {
+                    var query_dni = Request.QueryString["dni"];
+                    if (query_dni != null)
+                    {
+                        if (query_dni.Length > 0)
+                        {
+                            tb_dni.Text = Request.QueryString["dni"];
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
 
+        protected async void btn_login_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Usuario usuario = await Consultorio.database.getUsuario(int.Parse(tb_dni.Text));
+
+                Consultorio.token = await Consultorio.auth.iniciarSesion(usuario.correo, tb_password.Text);
+
+                Consultorio.usuario_logeado = usuario;
+
+                Response.Redirect("DashboardPage.aspx");
+            }
+            catch (Exception exp)
+            {
+                Response.Write(exp.Message);
+                Consultorio.usuario_logeado = null;
+                Consultorio.token = null;
+                throw;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Inicio.Master" AutoEventWireup="true" CodeBehind="ForgotPasswordPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ForgotPasswordPage" %>
+﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="~/Pages/Inicio.Master" AutoEventWireup="true" CodeBehind="ForgotPasswordPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ForgotPasswordPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <title>Recuperar Contraseña</title>
 </asp:Content>
@@ -9,29 +9,48 @@
                 <div class="login-form">
                     <div class="data-form">
                         <!--Logo-->
-                        <a href="HomePage.aspx" class="logo">
-                            <img src="../MedicalAppointmentUI/images/img-logo-simple.png" alt="logo"></a>
+                        <a href="HomePage.aspx" class="title-blog"
+                            runat="server" id="logo"></a>
                         <!--Logo-->
 
 
                         <!--Form-->
                         <div class="form-login reset">
-                            <div class="alert alert-warning" role="alert">
-                                Por favor, ingresa tu DNI y tu correo. Luego revisa tu bandeja de entrada para resetear la contraseña.
+                            <div class="alert alert-warning" role="alert"
+                                runat="server" id="advertencia">
+                                Por favor, ingresa tu DNI. Luego revisa tu bandeja de entrada para resetear la contraseña.
                             </div>
 
-                            <div class="icon-data">
-                                <i class="fa fa-user-circle"></i>
-                            </div>
-                            <input type="number" placeholder="Número de Documento">
+                            <asp:Label runat="server"
+                                AssociatedControlID="tb_dni"
+                                Text="Nro. de Documento:"/>
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="tb_dni"
+                                ValidationGroup="login_form"
+                                EnableClientScript="true"
+                                ErrorMessage="Campo Requerido*"
+                                ForeColor="Red"/>
+                            <asp:RangeValidator runat="server" 
+                                ControlToValidate="tb_dni"
+                                MinimumValue="1000000"
+                                MaximumValue="100000000"
+                                Type="Integer"                                
+                                ErrorMessage="DNI no válido"
+                                ValidationGroup="login_form"
+                                ForeColor="Red"/>
+                            <asp:TextBox runat="server"
+                                TextMode="Number"
+                                MaxLength="8"
+                                placeholder="Tu Número de Documento"
+                                ID="tb_dni"/>
 
-                            <div class="icon-data">
-                                <i class="fa fa-envelope-open-o"></i>
-                            </div>
-
-                            <input type="text" placeholder="Correo Electrónico">
-
-                            <button class="btn btn-red" type="submit">Reset</button>
+                            <asp:Button runat="server"
+                                CssClass="btn btn-btn-default"
+                                Text="Resetear Contraseña"
+                                ValidationGroup="login_form"
+                                CausesValidation="true"
+                                ID="btn_login"
+                                OnClick="btn_login_Click"/>
                         </div>
                         <!--Form-->
                         <span class="help">

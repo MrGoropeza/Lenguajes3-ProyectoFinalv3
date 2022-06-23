@@ -19,99 +19,58 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             rtdb = new FirebaseClient(RTDBkey);
         }
 
-        public Task<bool> addAdmin(Usuario admin)
+        public void addConsulta(Consulta consulta)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> addConsulta(Consulta consulta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> addPaciente(Usuario paciente)
-        {
-
-            try
-            {
-                await rtdb.Child("Pacientes")
-                    .Child(paciente.dni.ToString)
-                    .PutAsync("none");
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public async Task<bool> addUser(Usuario usuario)
+        public async void addUser(Usuario usuario)
         {
             try
             {
                 await rtdb.Child("Usuarios")
                     .Child(usuario.dni.ToString)
                     .PutAsync(usuario);
-                return true;
             }
             catch (Exception)
             {
-                return false;
             }
         }
 
-        public Task<bool> addProfesional(Usuario profesional)
+        public void addTurno(Turno turno)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> addTurno(Turno turno)
+        public void cambiarApellido(int dni)
         {
             throw new NotImplementedException();
         }
 
-        public bool cambiarApellido(int dni)
+        public void cambiarAvatarLink(int dni)
         {
             throw new NotImplementedException();
         }
 
-        public bool cambiarAvatarLink(int dni)
+        public void cambiarGenero(int dni)
         {
             throw new NotImplementedException();
         }
 
-        public bool cambiarGenero(int dni)
+        public void cambiarNombre(int dni)
         {
             throw new NotImplementedException();
         }
 
-        public bool cambiarNombre(int dni)
+        public void cambiarTelefono1(int dni)
         {
             throw new NotImplementedException();
         }
 
-        public bool cambiarTelefono1(int dni)
+        public void cambiarTelefono2(int dni)
         {
             throw new NotImplementedException();
         }
-
-        public bool cambiarTelefono2(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
-        Admin IDatabase.getAdmin(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Admin> IDatabase.getAdmins(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
         List<Turno> IDatabase.getAgendaProfesional(int dni)
         {
             throw new NotImplementedException();
@@ -144,32 +103,51 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             return list;
         }
 
-        Paciente IDatabase.getPaciente(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Paciente> IDatabase.getPacientes()
-        {
-            throw new NotImplementedException();
-        }
-
-        Profesional IDatabase.getProfesional(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Profesional> IDatabase.getProfesionales()
-        {
-            throw new NotImplementedException();
-        }
-
         Turno IDatabase.getTurno(DateTime fecha)
         {
             throw new NotImplementedException();
         }
 
         List<Turno> IDatabase.getTurnosProfesional(int dni)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void turnAdmin(int dni)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void turnProfesional(int dni)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void removeUser(Usuario user)
+        {
+            await rtdb.Child("Usuarios")
+                .Child(user.dni.ToString)
+                .DeleteAsync();
+        }
+
+        public List<Usuario> getProfesionales()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Usuario> getUsuario(int dni)
+        {
+            return await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .OnceSingleAsync<Usuario>();
+        }
+
+        public List<Usuario> getPacientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Usuario> getAdmins()
         {
             throw new NotImplementedException();
         }

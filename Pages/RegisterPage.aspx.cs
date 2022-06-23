@@ -75,29 +75,26 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             }
             try
             {
-                FirebaseAuthLink token = await Consultorio.auth.registrarUsuario(usuario.correo, tb_password.Text);
-                bool isUserUploaded = await Consultorio.database.addUser(usuario);
-                if (!isUserUploaded)
+                if (file_up.HasFile)
                 {
-                    await Consultorio.auth.eliminarCuenta(token.FirebaseToken);
+                    usuario.avatar_link = await Consultorio.storage.setAvatarLink(file_up.PostedFile.InputStream, usuario.dni);
                 }
-                bool isPacienteUploaded = await Consultorio.database.addPaciente(usuario);
-                if (!isPacienteUploaded)
-                {
-                    await Consultorio.auth.eliminarCuenta(token.FirebaseToken);
-                }
+                Consultorio.token = await Consultorio.auth.registrarUsuario(usuario.correo, tb_password.Text);
+                Consultorio.database.addUser(usuario);
                 Response.Redirect("LoginPage.aspx");
 
             }
             catch (Exception exp)
             {
                 Response.Write("<script>alert('" + exp.Message + "')</script>");
+                if (Consultorio.token != null)
+                {
+                    await Consultorio.auth.eliminarCuenta(Consultorio.token.FirebaseToken);
+                    Consultorio.database.removeUser(usuario);
+                }
                 throw;
             }
-            if (file_up.HasFile)
-            {
-                //file_up.PostedFile.InputStream;
-            }
+            
         }
     }
 }

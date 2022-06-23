@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Inicio.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.LoginPage" %>
+﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="Inicio.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.LoginPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <title>Iniciar Sesión</title>
@@ -11,23 +11,60 @@
                 <div class="login-form">
                     <div class="data-form">
                         <!--Logo-->
-                        <a href="HomePage.aspx" class="logo">
-                            <img src="../MedicalAppointmentUI/images/img-logo-simple.png" alt="logo" class="img-responsive"></a>
+                        <a href="HomePage.aspx" class="title-blog"
+                            runat="server" id="logo"></a>
                         <!--Logo-->
 
                         <!--Form-->
                         <div class="form-login">
-                            <div class="icon-data">
-                                <i class="fa fa-user-circle"></i>
-                            </div>
-                            <input type="number" placeholder="Número de Documento">
+                            <!--number document-->
+                            <asp:Label runat="server"
+                                AssociatedControlID="tb_dni"
+                                Text="Nro. de Documento:"/>
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="tb_dni"
+                                ValidationGroup="login_form"
+                                EnableClientScript="true"
+                                ErrorMessage="Campo Requerido*"
+                                ForeColor="Red"/>
+                            <asp:RangeValidator runat="server" 
+                                ControlToValidate="tb_dni"
+                                MinimumValue="1000000"
+                                MaximumValue="100000000"
+                                Type="Integer"                                
+                                ErrorMessage="DNI no válido"
+                                ValidationGroup="login_form"
+                                ForeColor="Red"/>
+                            <asp:TextBox runat="server"
+                                TextMode="Number"
+                                MaxLength="8"
+                                placeholder="Tu Número de Documento"
+                                ID="tb_dni"/>
+                            <!--number document-->
 
-                            <div class="icon-data">
-                                <i class="fa fa-key"></i>
-                            </div>
-                            <input type="password" placeholder="contraseña">
+                            <!--Password-->
+                            <asp:Label runat="server"
+                                AssociatedControlID="tb_password"
+                                Text="Contraseña:" />
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="tb_password"
+                                ValidationGroup="login_form"
+                                EnableClientScript="true"
+                                ErrorMessage="Campo Requerido*"
+                                ForeColor="Red"/>
+                            <asp:TextBox runat="server"
+                                ID="tb_password"
+                                TextMode="Password"
+                                placeholder="**********"/>
+                            <!--Password-->
 
-                            <a href="DashboardPage.aspx" class="btn btn-default" role="button">Iniciar Sesión</a>
+                            <asp:Button runat="server"
+                                CssClass="btn btn-btn-default"
+                                Text="Iniciar Sesión"
+                                ValidationGroup="login_form"
+                                CausesValidation="true"
+                                ID="btn_login"
+                                OnClick="btn_login_Click"/>
                             <!--<button class="btn btn-default" type="submit">Login</button>-->
                         </div>
 

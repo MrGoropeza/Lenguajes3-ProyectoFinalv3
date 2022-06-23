@@ -11,7 +11,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
     {
         Task<FirebaseAuthLink> iniciarSesion(string correo, string pass);
         Task<FirebaseAuthLink> registrarUsuario(string correo, string pass);
-        Task<bool> recuperarContra(string correo);
+        void recuperarContra(string correo);
         Task<bool> eliminarCuenta(string token);
     }
 }

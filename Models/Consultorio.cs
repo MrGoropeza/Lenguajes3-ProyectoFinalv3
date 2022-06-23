@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Firebase.Auth;
 
 namespace Lenguajes3_ProyectoFinalv3.Models
 {
@@ -18,6 +19,7 @@ namespace Lenguajes3_ProyectoFinalv3.Models
         public static IAuth auth;
 
         public static Usuario usuario_logeado;
+        public static FirebaseAuthLink token;
 
         public static void initFirebase()
         {

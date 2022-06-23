@@ -91,26 +91,31 @@
                         <div class="form-login">
                             <p>Número de documento</p>
 
+                            <asp:RangeValidator runat="server" 
+                                ControlToValidate="tb_login_dni"
+                                MinimumValue="1000000"
+                                MaximumValue="100000000"
+                                Type="Integer"
+                                ErrorMessage="DNI no válido"
+                                ValidationGroup="login_form"
+                                ForeColor="Red"/>
                             <asp:TextBox runat="server"
                                 TextMode="Number"
-                                ID="tb_login_dni" />
+                                ID="tb_login_dni"/>
 
                             <p>Contraseña</p>
+
                             <asp:TextBox TextMode="Password"
                                 runat="server"
                                 ID="tb_login_pass" />
-
-                            <div class="alert alert-warning" role="alert"
-                                runat="server"
-                                id="login_advertencia"
-                                visible="false">
-                            </div>
 
                             <asp:Button runat="server"
                                 CssClass="btn btn-default btn-small"
                                 OnClick="Login_Click"
                                 Text="Iniciar Sesión"
-                                ID="btn_login"/>
+                                ID="btn_login"
+                                CausesValidation="true"
+                                ValidationGroup="login_form"/>
 
                             
                             <!--<button class="btn btn-default" type="submit">Login</button>-->
@@ -123,25 +128,31 @@
                         <!--Form-->
                         <div class="form-login">
                             <p>Número de Documento</p>
+                            <asp:RangeValidator runat="server" 
+                                ControlToValidate="tb_register_dni"
+                                MinimumValue="1000000"
+                                MaximumValue="100000000"
+                                Type="Integer"
+                                ErrorMessage="DNI no válido"
+                                ValidationGroup="register_form"
+                                ForeColor="Red"/>
                             <asp:TextBox runat="server"
-                                ID="tb_register_id"
-                                TextMode="Number" />
+                                ID="tb_register_dni"
+                                TextMode="Number"
+                                CausesValidation="true"
+                                ValidationGroup="register_form"/>
 
                             <p>Nombre</p>
                             <asp:TextBox runat="server"
                                 ID="tb_register_name" />
 
-                            <div class="alert alert-warning" role="alert"
-                                runat="server"
-                                id="register_advertencia"
-                                visible="false">
-                            </div>
-
                             <asp:Button runat="server"
                                 CssClass="btn btn-default btn-small"
                                 OnClick="Register_Click"
                                 Text="Registrarse"
-                                ID="register_button"/>
+                                ID="register_button"
+                                CausesValidation="true"
+                                ValidationGroup="register_form"/>
                             <!--<button class="btn btn-default" type="submit">Login</button>-->
                         </div>
                         <!--Form-->

@@ -30,14 +30,31 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             
         }
 
-        public Task<FirebaseAuthLink> iniciarSesion(string correo, string pass)
+        public async Task<FirebaseAuthLink> iniciarSesion(string correo, string pass)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                FirebaseAuthLink userLink = await auth.SignInWithEmailAndPasswordAsync(correo,pass);
+                return userLink;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public Task<bool> recuperarContra(string correo)
+        public async void recuperarContra(string correo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await auth.SendPasswordResetEmailAsync(correo);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

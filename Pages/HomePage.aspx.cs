@@ -22,40 +22,48 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             }
         }
 
-        protected void Login_Click(object sender, EventArgs e)
+        protected async void Login_Click(object sender, EventArgs e)
         {
-            if (tb_login_dni.Text.Length == 0)
+            if(tb_login_dni.Text.Length > 0 && tb_login_pass.Text.Length > 0)
             {
-                login_advertencia.InnerText += "Ingresá tu DNI. ";
-                login_advertencia.Visible = true;
-            }
-            if (tb_login_pass.Text.Length == 0)
+                try
+                {
+                    Usuario usuario = await Consultorio.database.getUsuario(int.Parse(tb_login_dni.Text));
+
+                    Consultorio.token = await Consultorio.auth.iniciarSesion(usuario.correo, tb_login_pass.Text);
+
+                    Consultorio.usuario_logeado = usuario;
+
+                    Response.Redirect("DashboardPage.aspx");
+                }
+                catch (Exception exp)
+                {
+                    Response.Write(exp.Message);
+                    Consultorio.usuario_logeado = null;
+                    Consultorio.token = null;
+                    Response.Redirect("LoginPage.aspx");
+                    throw;
+                }
+            } else if (tb_login_dni.Text.Length > 0)
             {
-                login_advertencia.InnerText += "Ingresá tu contraseña. ";
-                login_advertencia.Visible = true;
+                string link = "LoginPage.aspx?dni=" + tb_login_dni.Text; 
+                Response.Redirect(link, false);
             }
-            //consultorio.auth.iniciarSesion(tb_login_dni.Text,tb_login_pass.Text);
+            else
+            {
+                Response.Redirect("LoginPage.aspx",false);
+            }
         }
 
         protected void Register_Click(object sender, EventArgs e)
         {
             List<string> redirect_link = new List<string>();
             redirect_link.Add("RegisterPage.aspx");
-            if (tb_register_id.Text.Length == 0)
+            if (tb_register_dni.Text.Length > 0)
             {
-                login_advertencia.InnerText += "Ingresá tu DNI. ";
-                login_advertencia.Visible = true;
+                redirect_link.Add("dni=" + tb_register_dni.Text);
             }
-            else
-            {
-                redirect_link.Add("dni="+ tb_register_id.Text);
-            }
-            if (tb_register_name.Text.Length == 0)
-            {
-                login_advertencia.InnerText += "Ingresá tu nombre. ";
-                login_advertencia.Visible = true;
-            }
-            else
+            if (tb_register_name.Text.Length > 0)
             {
                 redirect_link.Add("name=" + tb_register_name.Text);
             }
@@ -72,12 +80,19 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 }
                 
             }
-            Response.Redirect("DashboardPage.aspx");
+            Response.Redirect(link);
         }
 
         protected void btn_reserve_now_Click(object sender, EventArgs e)
         {
-
+            if(Consultorio.usuario_logeado != null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            else
+            {
+                Response.Redirect("DashboardPage.aspx");
+            }
         }
     }
 }
