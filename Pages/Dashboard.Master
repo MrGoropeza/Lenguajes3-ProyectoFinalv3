@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.Master.cs" Inherits="Lenguajes3_ProyectoFinalv3.Inicio" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.Master.cs" Inherits="Lenguajes3_ProyectoFinalv3.Dashboard" %>
 
 <!DOCTYPE html>
 
@@ -23,12 +23,13 @@
 
 <body>
     <!-- Inicio NavBar -->
+    <form id="form1" runat="server">
     <header>
         <div class="container">
             <div class="row">
                 <!--Logo-->
                 <div class="logo">
-                    <a href="HomePage.aspx"><img src="../MedicalAppointmentUI/images/img-logo.png" alt="logo"></a>
+                    <a href="HomePage.aspx"><img src="../images/img-logo.png" alt="logo"></a>
                 </div>
                 <!--Logo-->
 
@@ -37,23 +38,37 @@
                     <!--Avatar-->
                     <div class="avatar-profile">
                         <div class="user-edit">
-                            <h4>Jeniffer Martinez,</h4>
+                            <h4 runat="server" id="username">Jeniffer Martinez</h4>
                             <a href="AccountPage.aspx"><i class="fa fa-pencil"></i> editar perfil</a>
                         </div>
                         <div class="avatar-image">
-                            <img src="../MedicalAppointmentUI/images/img-avatar-profile.jpg" alt="avatar profile" class="img-responsive">
+                            <asp:Image runat="server"
+                                ID="user_avatar"
+                                AlternateText="profile_pic"
+                                Height="48"
+                                Width="50"
+                                style="object-fit:cover;"/>
                         </div>
                     </div>
                     <!--Avatar-->
 
                     <ul class="tools-help">
-                        <li><a href="HomePage.aspx" title="Cerrar Sesión" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-sign-out"></i></a></li>
+                        <li>
+                            <asp:LinkButton runat="server"
+                                ToolTip="Cerrar Sesión"
+                                ID="btn_logout"
+                                OnClick="btn_logout_Click"> <i class="fa fa-sign-out"></i>
+
+                            </asp:LinkButton>
+                        </li>
                     </ul>
+                    
                 </div>
                 <!--Header tools-->
             </div>
         </div>
     </header>
+
     <!-- Inicio NavBar -->
 
     <!--Menu-->
@@ -69,9 +84,10 @@
             <div class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><i class="fa fa-list-alt"></i> <a href="DashboardPage.aspx"> Tus Turnos</a> </li>
-                    <li> <i class="fa fa-address-book-o"></i> <a href="ReservarPage.aspx"> Reservar un Turno</a> </li>
-                    <li> <i class="fa fa-pencil"></i> <a href="AccountPage.aspx">mi cuenta</a> </li>
+                    <li runat="server" id="dashboard"><i class="fa fa-list-alt"></i> <a href="DashboardPage.aspx"> Tus Turnos</a> </li>
+                    <li runat="server" id="reservar"> <i class="fa fa-address-book-o"></i> <a href="ReservarPage.aspx"> Reservar un Turno</a> </li>
+                    <li runat="server" id="cuenta"> <i class="fa fa-pencil"></i> <a href="AccountPage.aspx">Mi Cuenta</a> </li>
+                    <li runat="server" id="users" visible="false"> <i class="fa fa-user"></i> <a href="UsersPage.aspx">Usuarios</a> </li>
                 </ul>
                 <ul class="nav navbar-nav visible-mobile">
                     <li> <a href="HomePage.aspx">Home Landing Page</a> </li>
@@ -89,30 +105,40 @@
     </nav>
     <!--Menu-->
 
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="Contenido" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
+    
+    <div>
+        <asp:ContentPlaceHolder ID="Contenido" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    
 
     <!-- Inicio Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="emergency-number">
-                    <p class="phone">(01) + 8000123456</p>
-                    <h5><i class="fa fa-phone-square"></i> emergency contact</h5>
-                </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="emergency-number">
+                        <p runat="server"
+                            id="numero_consul"
+                            class="phone">
+                            (01) + 8000123456
+                        </p>
+                        <h5><i class="fa fa-phone-square"></i>número de contacto
+                        </h5>
+                    </div>
 
-                <div class="emergency-number email">
-                    <p>support@iwthemes.com</p>
-                    <h5>online consultation <i class="fa fa-medkit"></i></h5>
+                    <div class="emergency-number email">
+                        <p runat="server"
+                            id="correo_consul">
+                            support@iwthemes.com
+                        </p>
+                        <h5>correo de contacto <i class="fa fa-mail-reply"></i></h5>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     <!-- Inicio Footer -->
+
+    </form>
 
     <!--Copyrights-->
     <div class="copyrights">

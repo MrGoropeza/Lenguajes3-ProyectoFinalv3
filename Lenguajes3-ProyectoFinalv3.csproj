@@ -239,9 +239,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="images\agenda.png" />
+    <Content Include="images\avatar-default.png" />
     <Content Include="images\bg_1.jpg" />
     <Content Include="images\bg_2.jpg" />
     <Content Include="images\image_4.jpg" />
+    <Content Include="images\img-logo-simple.png" />
+    <Content Include="images\img-logo-white.png" />
+    <Content Include="images\img-logo.png" />
     <Content Include="images\psychologist.png" />
     <Content Include="MedicalAppointmentUI\404-page.html" />
     <Content Include="MedicalAppointmentUI\appointments-reserved.html" />
@@ -313,7 +317,9 @@
     <Content Include="Pages\ProfessionalsPage.aspx" />
     <Content Include="Pages\RegisterPage.aspx" />
     <Content Include="Pages\ReservarPage.aspx" />
+    <Content Include="Pages\UsersPage.aspx" />
     <Content Include="Pages\Widgets\CalendarioSelect.ascx" />
+    <Content Include="Pages\Widgets\Profesional.ascx" />
     <Content Include="Pages\Widgets\TurnoReservado.ascx" />
     <Content Include="Pages\Widgets\UsuarioSinTurnos.ascx" />
     <Content Include="Web.config" />
@@ -326,8 +332,6 @@
     <Compile Include="Models\Consulta.cs" />
     <Compile Include="Models\Consultorio.cs" />
     <Compile Include="Models\FirebaseModels\DatosConsultorio.cs" />
-    <Compile Include="Models\Paciente.cs" />
-    <Compile Include="Models\Profesional.cs" />
     <Compile Include="Models\Turno.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Pages\AccountPage.aspx.cs">
@@ -407,12 +411,26 @@
     <Compile Include="Pages\ReservarPage.aspx.designer.cs">
       <DependentUpon>ReservarPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UsersPage.aspx.cs">
+      <DependentUpon>UsersPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UsersPage.aspx.designer.cs">
+      <DependentUpon>UsersPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Widgets\CalendarioSelect.ascx.cs">
       <DependentUpon>CalendarioSelect.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Widgets\CalendarioSelect.ascx.designer.cs">
       <DependentUpon>CalendarioSelect.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Widgets\Profesional.ascx.cs">
+      <DependentUpon>Profesional.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Widgets\Profesional.ascx.designer.cs">
+      <DependentUpon>Profesional.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Widgets\TurnoReservado.ascx.cs">
       <DependentUpon>TurnoReservado.ascx</DependentUpon>

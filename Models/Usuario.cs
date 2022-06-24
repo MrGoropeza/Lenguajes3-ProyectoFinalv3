@@ -12,8 +12,12 @@ namespace Lenguajes3_ProyectoFinalv3.Models
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string telefono1 { get; set; }
-        public string telefono2 { get; set; }
+        public string fecha_nac { get; set; }
         public string genero { get; set; }
         public string avatar_link { get; set; }
+        public bool isAdmin { get; set; }
+        public bool isProfesional { get; set; }
+        public string profesional_bio { get; set; }
+        public string profesional_titulo { get; set; }
     }
 }

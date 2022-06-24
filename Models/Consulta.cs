@@ -7,8 +7,8 @@ namespace Lenguajes3_ProyectoFinalv3.Models
 {
     public class Consulta
     {
-        Paciente paciente { get; set; }
-        Profesional Profesional { get; set; }
+        Usuario paciente { get; set; }
+        Usuario Profesional { get; set; }
         DateTime fecha { get; set; }
     }
 }

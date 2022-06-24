@@ -10,8 +10,8 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
     public interface IDatabase
     {
         #region selects-read
-        List<String> getDatosConsultorio();
-        List<Usuario> getProfesionales();
+        List<string> getDatosConsultorio();
+        Task<List<Usuario>> getProfesionales();
         Task<Usuario> getUsuario(int dni);
         List<Usuario> getPacientes();
         List<Usuario> getAdmins();
@@ -29,12 +29,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         #endregion
 
         #region updates
-        void cambiarNombre(int dni);
-        void cambiarApellido(int dni);
-        void cambiarGenero(int dni);
-        void cambiarTelefono1(int dni);
-        void cambiarTelefono2(int dni);
-        void cambiarAvatarLink(int dni);
+        void updateUser(Usuario usuario);
         void turnAdmin(int dni);
         void turnProfesional(int dni);
         #endregion

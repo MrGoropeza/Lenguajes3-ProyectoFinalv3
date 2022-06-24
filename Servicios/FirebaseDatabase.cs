@@ -42,35 +42,6 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             throw new NotImplementedException();
         }
 
-        public void cambiarApellido(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void cambiarAvatarLink(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void cambiarGenero(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void cambiarNombre(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void cambiarTelefono1(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void cambiarTelefono2(int dni)
-        {
-            throw new NotImplementedException();
-        }
         List<Turno> IDatabase.getAgendaProfesional(int dni)
         {
             throw new NotImplementedException();
@@ -130,9 +101,17 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
                 .DeleteAsync();
         }
 
-        public List<Usuario> getProfesionales()
+        public async Task<List<Usuario>> getProfesionales()
         {
-            throw new NotImplementedException();
+            List<Usuario> pros = new List<Usuario>();
+            var query = await rtdb.Child("Usuarios")
+                .OnceAsync<Usuario>();
+            var queryWhere = query.Where(user => user.Object.isProfesional);
+            foreach (var item in queryWhere)
+            {
+                pros.Add(item.Object);
+            }
+            return pros;
         }
 
         public async Task<Usuario> getUsuario(int dni)
@@ -150,6 +129,19 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         public List<Usuario> getAdmins()
         {
             throw new NotImplementedException();
+        }
+
+        public async void updateUser(Usuario usuario)
+        {
+            try
+            {
+                await rtdb.Child("Usuarios")
+                    .Child(usuario.dni.ToString)
+                    .PatchAsync(usuario);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

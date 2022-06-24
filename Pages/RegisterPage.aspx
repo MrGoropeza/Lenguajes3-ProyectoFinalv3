@@ -15,8 +15,9 @@
                             <a class="btn btn-green btn-xsmall" href="LoginPage.aspx"><i class="fa fa-angle-double-left"></i>Ir a Inicio de Sesión</a>
                         </span>
                         <!--Logo-->
-                        <a href="HomePage.aspx" class="title-blog"
-                            runat="server" id="logo"></a>
+                        <div class="logo">
+                            <a href="HomePage.aspx"><img src="../images/img-logo-simple.png" alt="logo"></a>
+                        </div>
                         <!--Logo-->
 
                         <!--Form-->
@@ -136,22 +137,21 @@
                                     
                                     <!--phone-->
 
-                                    <!--Alternative phone-->
+                                    <!--Fecha Nacimiento-->
                                     <asp:Label runat="server"
-                                        AssociatedControlID="tb_telefono2"
-                                        Text="Teléfono Alternativo:"/>
-                                    <asp:CustomValidator runat="server"
-                                        ValidateEmptyText="false"
-                                        ControlToValidate="tb_telefono2"
+                                        AssociatedControlID="tb_fecha_nac"
+                                        Text="Fecha de Nacimiento:"/>
+                                    <asp:RequiredFieldValidator runat="server" 
+                                        ControlToValidate="tb_fecha_nac"
                                         ValidationGroup="register_form"
-                                        OnServerValidate="validarTelefono"
-                                        ErrorMessage="Número no válido"
+                                        EnableClientScript="true"
+                                        ErrorMessage="Campo Requerido*"
                                         ForeColor="Red"/>
                                     <asp:TextBox runat="server"
-                                        TextMode="Phone"
-                                        placeholder="Telefono Alternativo"
-                                        ID="tb_telefono2" />
-                                    <!--Alternative phone-->
+                                        TextMode="Date"
+                                        placeholder="dd/mm/aaaa"
+                                        ID="tb_fecha_nac" />
+                                    <!--Fecha Nacimiento-->
                                 </div>
 
                             </div>

@@ -14,7 +14,6 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         {
             if (!IsPostBack)
             {
-                logo.InnerText = Consultorio.nombre;
                 try
                 {
                     var query_dni = Request.QueryString["dni"];
@@ -37,19 +36,26 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             try
             {
                 Usuario usuario = await Consultorio.database.getUsuario(int.Parse(tb_dni.Text));
+                if (usuario!=null)
+                {
+                    Consultorio.token = await Consultorio.auth.iniciarSesion(usuario.correo, tb_password.Text);
+                    Consultorio.usuario_logeado = usuario;
+                    Response.Redirect("DashboardPage.aspx");
+                }
+                else
+                {
+                    Response.Write("No estás registrado.");
+                }
 
-                Consultorio.token = await Consultorio.auth.iniciarSesion(usuario.correo, tb_password.Text);
+                
 
-                Consultorio.usuario_logeado = usuario;
-
-                Response.Redirect("DashboardPage.aspx");
+                
             }
             catch (Exception exp)
             {
                 Response.Write(exp.Message);
                 Consultorio.usuario_logeado = null;
                 Consultorio.token = null;
-                throw;
             }
         }
     }

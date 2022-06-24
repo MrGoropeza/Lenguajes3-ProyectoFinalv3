@@ -7,38 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lenguajes3_ProyectoFinalv3.Pages
+namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 {
 
 
-    public partial class ForgotPasswordPage
+    public partial class Profesional
     {
 
         /// <summary>
-        /// advertencia control.
+        /// pro_img control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl advertencia;
+        protected global::System.Web.UI.HtmlControls.HtmlImage pro_img;
 
         /// <summary>
-        /// tb_dni control.
+        /// pro_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_dni;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_name;
 
         /// <summary>
-        /// btn_login control.
+        /// pro_title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_login;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_title;
+
+        /// <summary>
+        /// pro_desc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_desc;
     }
 }

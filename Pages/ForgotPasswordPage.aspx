@@ -9,8 +9,9 @@
                 <div class="login-form">
                     <div class="data-form">
                         <!--Logo-->
-                        <a href="HomePage.aspx" class="title-blog"
-                            runat="server" id="logo"></a>
+                        <div class="logo">
+                            <a href="HomePage.aspx"><img src="../images/img-logo-simple.png" alt="logo"></a>
+                        </div>
                         <!--Logo-->
 
 

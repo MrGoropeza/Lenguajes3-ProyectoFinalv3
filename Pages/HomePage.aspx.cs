@@ -85,7 +85,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 
         protected void btn_reserve_now_Click(object sender, EventArgs e)
         {
-            if(Consultorio.usuario_logeado != null)
+            if(Consultorio.usuario_logeado == null)
             {
                 Response.Redirect("LoginPage.aspx");
             }

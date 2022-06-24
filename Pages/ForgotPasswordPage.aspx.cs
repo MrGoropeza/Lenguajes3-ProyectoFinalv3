@@ -14,7 +14,6 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         {
             if (!IsPostBack)
             {
-                logo.InnerText = Consultorio.nombre;
                 advertencia.Visible = false;
             }
         }
