@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Reservar un Turno" Async="true" Language="C#" MasterPageFile="~/Pages/Dashboard.Master" AutoEventWireup="true" CodeBehind="ReservarPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ReservarPage" %>
 
-<%@ Register Src="~/Pages/Widgets/CalendarioSelect.ascx" TagPrefix="cal" TagName="CalendarAppointment" %>
-
 
 <asp:Content ID="ContenidoHead" ContentPlaceHolderID="Head" runat="server">
     <title>Reservar un Turno</title>

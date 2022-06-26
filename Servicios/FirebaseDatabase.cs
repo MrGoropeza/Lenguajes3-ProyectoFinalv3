@@ -156,5 +156,49 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             {
             }
         }
+
+        public async Task<List<Turno>> getTurnosPaciente(int dni)
+        {
+            List<Turno> turnos = new List<Turno>();
+            var todos = await rtdb.Child("Turnos").OnceAsync<object>();
+            foreach (var fecha in todos)
+            {
+                var profesionales = await rtdb.Child("Turnos")
+                    .Child(fecha.Key).OnceAsync<object>();
+                foreach (var pro in profesionales)
+                {
+                    var turnosQuery = await rtdb.Child("Turnos")
+                        .Child(fecha.Key).Child(pro.Key)
+                        .OnceAsync<Turno>();
+                    foreach (var turno in turnosQuery)
+                    {
+                        if(turno.Object.pacienteDNI == dni
+                            && turno.Object.fecha >= DateTime.Today)
+                        {
+                            turnos.Add(turno.Object);
+                        }
+                    }
+                }
+                turnos = turnos.OrderBy(turno => turno.slot).ToList();
+            }
+            turnos = turnos.OrderBy(turno => turno.fecha).ToList();
+            return turnos;
+        }
+
+        public async Task<Usuario> getProfesional(int dni)
+        {
+            return await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .OnceSingleAsync<Usuario>();
+        }
+
+        public async void removeTurno(Turno turno)
+        {
+            await rtdb.Child("Turnos")
+                .Child(turno.fecha.ToString("dd-MM-yyyy"))
+                .Child(turno.profesionalDNI.ToString())
+                .Child("slot-"+turno.slot.ToString())
+                .DeleteAsync();
+        }
     }
 }

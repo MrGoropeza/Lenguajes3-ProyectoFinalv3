@@ -23,6 +23,10 @@ namespace Lenguajes3_ProyectoFinalv3.Models
 
         public static List<Usuario> profesionales { get; set; }
 
+        public static List<Turno> turnos_logeado { get; set; }
+
+        public static int turnos_cargados { get; set; }
+
         public static void initFirebase()
         {
             database = new FirebaseDatabase();
@@ -38,5 +42,71 @@ namespace Lenguajes3_ProyectoFinalv3.Models
             numero = datos[3];
         }
 
+        public static string monthFromInt(int month)
+        {
+            string respuesta = "";
+            switch (month)
+            {
+                case 1:
+                    respuesta = "Enero";
+                    break;
+                case 2:
+                    respuesta = "Febrero";
+                    break;
+                case 3:
+                    respuesta = "Marzo";
+                    break;
+                case 4:
+                    respuesta = "Abril";
+                    break;
+                case 5:
+                    respuesta = "Mayo";
+                    break;
+                case 6:
+                    respuesta = "Junio";
+                    break;
+                case 7:
+                    respuesta = "Julio";
+                    break;
+                case 8:
+                    respuesta = "Agosto";
+                    break;
+                case 9:
+                    respuesta = "Septiembre";
+                    break;
+                case 10:
+                    respuesta = "Octubre";
+                    break;
+                case 11:
+                    respuesta = "Noviembre";
+                    break;
+                case 12:
+                    respuesta = "Diciembre";
+                    break;
+            }
+            return respuesta;
+        }
+
+        public static string hourFromSlot(int slot)
+        {
+            string respuesta = "";
+            DateTime hora = new DateTime(DateTime.Today.Year
+                ,DateTime.Today.Month
+                ,DateTime.Today.Day
+                ,10,0,0);
+
+            if(slot >= 0 && slot <= 3)
+            {
+                respuesta = hora.AddMinutes(30 * slot).ToString("HH:mm")
+                        + " - "
+                        + hora.AddMinutes(30 * slot).AddMinutes(30).ToString("HH:mm");
+            }else if (slot >= 4 && slot <= 15)
+            {
+                respuesta = hora.AddHours(2).AddMinutes(30 * (slot - 4)).ToString("HH:mm")
+                        + " - "
+                        + hora.AddHours(2).AddMinutes(30 * (slot - 4)).AddMinutes(30).ToString("HH:mm");
+            }
+            return respuesta;
+        }
     }
 }

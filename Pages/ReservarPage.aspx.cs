@@ -99,7 +99,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
                         advertencia.Visible = true;
                         return;
-                    } 
+                    }
                     advertencia.Visible = false;
                     Usuario pro_selected = Consultorio.profesionales.
                         Where(pro => pro.dni.ToString() == dpls_pros.SelectedItem.Value).First();
@@ -219,7 +219,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             }
         }
 
-        protected void btn_reservar_Click(object sender, EventArgs e)
+        protected async void btn_reservar_Click(object sender, EventArgs e)
         {
             DateTime fecha_selected = DateTime.Today;
             bool isFechaValida = DateTime.TryParse(tb_fecha.Text, out fecha_selected);
@@ -257,8 +257,40 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 {
                     nuevo.fecha = fecha_selected.AddMinutes(nuevo.slot * 30).AddHours(4);
                 }
-                Consultorio.database.addTurno(nuevo);
-                Response.Redirect("DashboardPage.aspx", false);
+
+                bool encontrado_en_mismo_horario = false;
+                bool turno_en_el_mismo_dia = false;
+                int index = 0;
+                while (!encontrado_en_mismo_horario && index < Consultorio.turnos_logeado.Count())
+                {
+                    if(Consultorio.turnos_logeado[index].slot == nuevo.slot
+                        && Consultorio.turnos_logeado[index].fecha == fecha_selected)
+                    {
+                        encontrado_en_mismo_horario = true;
+                    }else if (Consultorio.turnos_logeado[index].fecha == fecha_selected)
+                    {
+                        turno_en_el_mismo_dia = true;
+                    }
+                    index++;
+                }
+                if (encontrado_en_mismo_horario)
+                {
+                    advertencia.InnerText = "Ya tenés un turno en esa fecha y hora.";
+                    advertencia.Visible = true;
+                } else if (turno_en_el_mismo_dia)
+                {
+                    advertencia.InnerText = "Ya tenés un turno ese día. No podés tener dos turnos en un día.";
+                    advertencia.Visible = true;
+                }
+                else
+                {
+                    Consultorio.database.addTurno(nuevo);
+                    Consultorio.turnos_logeado =
+                        await Consultorio.database
+                        .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+                    Response.Redirect("DashboardPage.aspx", false);
+                }
+                
             }
         }
     }

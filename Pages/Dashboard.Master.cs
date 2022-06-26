@@ -82,6 +82,8 @@ namespace Lenguajes3_ProyectoFinalv3
         {
             Consultorio.usuario_logeado = null;
             Consultorio.token = null;
+            Consultorio.turnos_cargados = 0;
+            Consultorio.turnos_logeado = null;
             Response.Redirect("HomePage.aspx", false);
         }
     }

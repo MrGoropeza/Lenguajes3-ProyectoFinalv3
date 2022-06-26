@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Dashboard.Master" AutoEventWireup="true" CodeBehind="ModifyTurnoPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ModifyTurnoPage" %>
-<%@ Register Src="~/Pages/Widgets/CalendarioSelect.ascx" TagPrefix="cal" TagName="CalendarAppointment" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <title>Modificar Turno</title>
@@ -30,7 +30,6 @@
             <div class="row">
             </div>
 
-            <cal:CalendarAppointment id="calendarioTurno" runat="server"></cal:CalendarAppointment>
         </div>
     </div>
 

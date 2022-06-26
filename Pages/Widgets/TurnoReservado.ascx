@@ -8,37 +8,43 @@
             <!--Item-->
             <div class="avatar-doctor">
                 <div class="avatar-image">
-                    <img src="../MedicalAppointmentUI/images/img-doctor-pic-01.jpg" alt="doctor">
-                    <h4><i class="fa fa-user-md" aria-hidden="true"></i>
-                        <a href="meet-doctors.html" title="Ver Perfil">Dr. Jurado</a></h4>
-                    <p>Cardiothoracic Anesthesia and Anesthesiology - FCI</p>
+                    <img src="../images/avatar-default.png" alt="foto profesional"
+                         runat="server" id="pro_avatar">
+                    <h4><a href="../ProfessionalsPage.aspx" title="Ver Perfil"
+                            runat="server" id="pro_name">Dr. Jurado</a></h4>
+                    <p runat="server" id="pro_title">Cardiothoracic Anesthesia and Anesthesiology - FCI</p>
                 </div>
             </div>
 
             <div class="data-meeting">
                 <ul class="list-unstyled info-meet">
+
                     <li>
-                        <p>Nro.Ticket: <span>9876005-00</span></p>
+                        <p class="time">Fecha: <span runat="server" id="turno_fecha">September 15, 2017 at 10:00am</span></p>
                     </li>
-                    <li>
-                        <p class="time">Fecha: <span>September 15, 2017 at 10:00am</span></p>
-                    </li>
-                    <li>
-                        <p>Tipo de Turno: <span>General Medical Assistance</span></p>
-                    </li>
-                    <li>
-                        <p>Oficina del Doctor: <span>202</span></p>
-                    </li>
-                    <li>
+
+                    <%--<li>
                         <div class="alert alert-info" role="alert">Observaciones: None.</div>
-                    </li>
+                    </li>--%>
                 </ul>
 
                 <ul class="list-unstyled btns">
                     <li>
-                        <button class="btn btn-red btn-xsmall confirm"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</button></li>
-                    <li><a class="btn btn-xsmall" href="#"><i class="fa fa-arrow-down" aria-hidden="true"></i>Imprimir</a></li>
-                    <li><a class="btn btn-green btn-xsmall" href="ModifyTurnoPage.aspx"><i class="fa fa-pencil" aria-hidden="true"></i>Modificar</a></li>
+                        <asp:LinkButton runat="server"
+                            CssClass="btn btn-red btn-xsmall confirm"
+                            ID="btn_cancelar"
+                            OnClick="btn_cancelar_Click">
+                            <i class="fa fa-times" aria-hidden="true"></i> Cancelar
+                        </asp:LinkButton>
+                    </li>
+                    <li>
+                        <asp:LinkButton runat="server"
+                            CssClass="btn btn-green btn-xsmall"
+                            ID="btn_modificar"
+                            OnClick="btn_modificar_Click">
+                            <i class="fa fa-pencil" aria-hidden="true"></i> Modificar
+                        </asp:LinkButton>
+                    </li>
                 </ul>
             </div>
         </div>

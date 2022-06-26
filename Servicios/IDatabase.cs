@@ -12,6 +12,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         #region selects-read
         List<string> getDatosConsultorio();
         Task<List<Usuario>> getProfesionales();
+        Task<Usuario> getProfesional(int dni);
         Task<Usuario> getUsuario(int dni);
         List<Usuario> getPacientes();
         List<Usuario> getAdmins();
@@ -20,6 +21,8 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         Consulta getConsultaPaciente(int dni);
         Consulta getConsultaProfesional(int dni);
         Task<List<Turno>> getAgendaProfesional(int dni, DateTime fecha);
+
+        Task<List<Turno>> getTurnosPaciente(int dni);
         #endregion
 
         #region insert-create
@@ -36,6 +39,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
 
         #region delete
         void removeUser(Usuario user);
+        void removeTurno(Turno turno);
         #endregion
     }
 }
