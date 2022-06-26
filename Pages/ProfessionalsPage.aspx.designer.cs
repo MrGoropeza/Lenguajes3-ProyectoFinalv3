@@ -15,12 +15,30 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
     {
 
         /// <summary>
-        /// prof_widgets control.
+        /// test_pros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder prof_widgets;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl test_pros;
+
+        /// <summary>
+        /// panel_pros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panel_pros;
+
+        /// <summary>
+        /// fila1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder fila1;
     }
 }

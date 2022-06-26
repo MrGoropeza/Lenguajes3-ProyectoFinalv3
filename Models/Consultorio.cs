@@ -21,6 +21,8 @@ namespace Lenguajes3_ProyectoFinalv3.Models
         public static Usuario usuario_logeado;
         public static FirebaseAuthLink token;
 
+        public static List<Usuario> profesionales { get; set; }
+
         public static void initFirebase()
         {
             database = new FirebaseDatabase();

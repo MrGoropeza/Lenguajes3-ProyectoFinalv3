@@ -318,7 +318,6 @@
     <Content Include="Pages\RegisterPage.aspx" />
     <Content Include="Pages\ReservarPage.aspx" />
     <Content Include="Pages\UsersPage.aspx" />
-    <Content Include="Pages\Widgets\CalendarioSelect.ascx" />
     <Content Include="Pages\Widgets\Profesional.ascx" />
     <Content Include="Pages\Widgets\TurnoReservado.ascx" />
     <Content Include="Pages\Widgets\UsuarioSinTurnos.ascx" />
@@ -417,13 +416,6 @@
     </Compile>
     <Compile Include="Pages\UsersPage.aspx.designer.cs">
       <DependentUpon>UsersPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Widgets\CalendarioSelect.ascx.cs">
-      <DependentUpon>CalendarioSelect.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Widgets\CalendarioSelect.ascx.designer.cs">
-      <DependentUpon>CalendarioSelect.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Widgets\Profesional.ascx.cs">
       <DependentUpon>Profesional.ascx</DependentUpon>

@@ -148,6 +148,7 @@
                                         ErrorMessage="Campo Requerido*"
                                         ForeColor="Red"/>
                                     <asp:TextBox runat="server"
+                                        lang="es"
                                         TextMode="Date"
                                         placeholder="dd/mm/aaaa"
                                         ID="tb_fecha_nac" />

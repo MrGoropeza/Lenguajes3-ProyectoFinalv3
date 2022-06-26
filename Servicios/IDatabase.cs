@@ -19,7 +19,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         List<Turno> getTurnosProfesional(int dni);
         Consulta getConsultaPaciente(int dni);
         Consulta getConsultaProfesional(int dni);
-        List<Turno> getAgendaProfesional(int dni);
+        Task<List<Turno>> getAgendaProfesional(int dni, DateTime fecha);
         #endregion
 
         #region insert-create

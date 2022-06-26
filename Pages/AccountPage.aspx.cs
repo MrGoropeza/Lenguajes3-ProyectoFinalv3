@@ -101,6 +101,10 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 {
                     usuario.avatar_link = await Consultorio.storage.setAvatarLink(file_up.PostedFile.InputStream, usuario.dni);
                 }
+                else
+                {
+                    usuario.avatar_link = Consultorio.usuario_logeado.avatar_link;
+                }
                 Consultorio.database.updateUser(usuario);
                 Consultorio.usuario_logeado = usuario;
             }

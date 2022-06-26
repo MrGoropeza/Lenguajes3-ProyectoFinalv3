@@ -8,13 +8,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
         <div class="main-container">
-
+            <p runat="server" id="test_pros"></p>
             <div class="department-title">
                 <h3>Nuestros Profesionales</h3>
                 <hr>
             </div>
 
-            <asp:PlaceHolder runat="server" ID="prof_widgets"></asp:PlaceHolder>
+                <asp:Panel runat="server" ID="panel_pros">
+                    <asp:PlaceHolder runat="server" ID="fila1"></asp:PlaceHolder>
+                </asp:Panel>
+            
             
         </div>
     </div>

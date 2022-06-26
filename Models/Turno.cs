@@ -7,9 +7,9 @@ namespace Lenguajes3_ProyectoFinalv3.Models
 {
     public class Turno
     {
-        Usuario paciente { get; set; }
-        Usuario profesional { get; set; }
-        DateTime fecha { get; set; }
-        int DuracionMinutos { get; set; } 
+        public int pacienteDNI { get; set; }
+        public int profesionalDNI { get; set; }
+        public DateTime fecha { get; set; }
+        public int slot { get; set; } 
     }
 }

@@ -15,6 +15,7 @@ namespace Lenguajes3_ProyectoFinalv3
         protected void Page_Load(object sender, EventArgs e)
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             if (!IsPostBack)
             {
                 correo_consul.InnerText = Consultorio.correo;

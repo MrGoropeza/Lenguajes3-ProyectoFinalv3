@@ -37,14 +37,27 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             }
         }
 
-        public void addTurno(Turno turno)
+        public async void addTurno(Turno turno)
         {
-            throw new NotImplementedException();
+            await rtdb.Child("Turnos")
+                .Child(turno.fecha.ToString("dd-MM-yyyy"))
+                .Child(turno.profesionalDNI.ToString())
+                .Child("slot-" + turno.slot.ToString())
+                .PutAsync(turno);
         }
 
-        List<Turno> IDatabase.getAgendaProfesional(int dni)
+        public async Task<List<Turno>> getAgendaProfesional(int dni, DateTime fecha)
         {
-            throw new NotImplementedException();
+            List<Turno> resultado = new List<Turno>();
+            var query = await rtdb.Child("Turnos")
+                .Child(fecha.ToString("dd-MM-yyyy"))
+                .Child(dni.ToString())
+                .OnceAsync<Turno>();
+            foreach (var turno in query)
+            {
+                resultado.Add(turno.Object);
+            }
+            return resultado;
         }
 
         Consulta IDatabase.getConsultaPaciente(int dni)
