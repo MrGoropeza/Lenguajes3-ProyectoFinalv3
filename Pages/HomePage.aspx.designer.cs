@@ -33,6 +33,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected global::System.Web.UI.WebControls.Button btn_reserve_now;
 
         /// <summary>
+        /// btn_reservar_rojo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_reservar_rojo;
+
+        /// <summary>
         /// contacto_correo control.
         /// </summary>
         /// <remarks>

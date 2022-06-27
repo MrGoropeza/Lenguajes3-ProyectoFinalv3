@@ -71,7 +71,7 @@
                     --%>
                     <!-- Fin Turnos del Paciente -->
 
-                    <div class="row">
+                    <%--<div class="row">
                         <div class="load-more">
                             <asp:Button runat="server"
                                 CssClass="btn btn-green btn-small"
@@ -79,28 +79,33 @@
                                 OnClick="btn_load_more_Click"
                                 Text="Cargar Más"/>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
                 <!-- Inicio Elementos al Costado -->
                 <aside>
                     <div class="elements-aside gray-color">
                         <ul>
-                            <li class="color-1">
-                                <i class="fa fa-heartbeat" aria-hidden="true"></i>
-                                <h4>Casos de Emergencia</h4>
-                                <p>Si necesitas un doctor urgente fuera del horario de atención, llama al número de turnos por emergencia para un servicio de emergencia.</p>
-                            </li>
                             <li class="color-2">
                                 <i class="fa fa-hourglass-half" aria-hidden="true"></i>
                                 <h4>Horarios de Atención</h4>
-                                <p>Lunes a Viernes <span>08:00am a 10:00pm</span></p>
-                                <p>Fines de Semana <span>09:00am to 12:00pm</span></p>
+                                <p>Lunes a Viernes
+                                    <span>10:00am a 12:00am</span>
+                                    <span>02:00pm a 08:00pm</span>
+                                </p>
                             </li>
                             <li class="color-3">
                                 <i class="fa fa-info" aria-hidden="true"></i>
-                                <h4>Doubts?</h4>
-                                <p>Office Av. 100 #0987-988, <span>Central Park</span></p>
+                                <h4>Contacto</h4>
+                                <p>Dirección
+                                    <span runat="server" id="direccion"></span>
+                                </p>
+                                <p>Teléfono
+                                    <span runat="server" id="telefono"></span>
+                                </p>
+                                <p>Correo electrónico
+                                    <span runat="server" id="correo"></span>
+                                </p>
                             </li>
                         </ul>
                     </div>

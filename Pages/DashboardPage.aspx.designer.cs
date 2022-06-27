@@ -33,12 +33,30 @@ namespace Lenguajes3_ProyectoFinalv3
         protected global::System.Web.UI.WebControls.PlaceHolder ph_turnos;
 
         /// <summary>
-        /// btn_load_more control.
+        /// direccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_load_more;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl direccion;
+
+        /// <summary>
+        /// telefono control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl telefono;
+
+        /// <summary>
+        /// correo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl correo;
     }
 }

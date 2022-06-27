@@ -44,7 +44,12 @@
                             <i class="fa fa-archive" aria-hidden="true"></i>
                             <h4>Reservar un Turno</h4>
                             <p>Ahora podés reservar tu turno online! Solo registrate o inicia sesión</p>
-                            <a href="DashboardPage.aspx" class="btn btn-red btn-xsmall" role="button">Ver el Panel</a>
+                            <asp:Button runat="server"
+                                CssClass="btn btn-red btn-xsmall"
+                                Text="Reservar ahora"
+                                ID="btn_reservar_rojo"
+                                OnClick="btn_reserve_now_Click"
+                            />
                         </li>
                         <li class="color-2">
                             <i class="fa fa-hourglass-half" aria-hidden="true"></i>

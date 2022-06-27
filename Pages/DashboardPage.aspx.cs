@@ -16,6 +16,9 @@ namespace Lenguajes3_ProyectoFinalv3
             if (!IsPostBack)
             {
                 Consultorio.turnos_cargados = 0;
+                correo.InnerText = Consultorio.correo;
+                telefono.InnerText = Consultorio.numero;
+                direccion.InnerText = Consultorio.direccion;
                 if(Consultorio.usuario_logeado == null)
                 {
                     Response.Redirect("HomePage.aspx");
@@ -32,29 +35,41 @@ namespace Lenguajes3_ProyectoFinalv3
                             await Consultorio.database
                             .getTurnosPaciente(Consultorio.usuario_logeado.dni);
                     }
-                    
 
-                    if(Consultorio.turnos_logeado != null)
-                    {
-                        btn_load_more_Click(sender,e);
-                    }
+
+                    cargar_turnos();
                 }
             }
             else
             {
-                //if (Consultorio.usuario_logeado == null)
-                //{
-                //    Response.Redirect("HomePage.aspx");
-                //}
-                //else
-                //{
-                //    if (Consultorio.turnos_logeado != null)
-                //    {
-                //        btn_load_more_Click(sender, e);
-                //    }
-                //}
+                cargar_turnos();
             }
         }
+
+        private async void cargar_turnos()
+        {
+            Consultorio.turnos_logeado =
+                await Consultorio.database
+                .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+            
+            if (Consultorio.turnos_logeado != null)
+            {
+                if(Consultorio.turnos_logeado.Count == 0)
+                {
+                    advertencia.InnerText = "No tenés turnos reservados.";
+                    advertencia.Visible = true;
+                        return;
+                }
+                foreach (var turno in Consultorio.turnos_logeado)
+                {
+                    TurnoReservado turno_widget = (TurnoReservado)LoadControl("Widgets/TurnoReservado.ascx");
+                    turno_widget.Turno = turno;
+                    turno_widget.Profesional = await Consultorio.database.getProfesional(turno.profesionalDNI);
+                    ph_turnos.Controls.Add(turno_widget);
+                }
+            }
+        }
+
 
         protected async void btn_load_more_Click(object sender, EventArgs e)
         {
