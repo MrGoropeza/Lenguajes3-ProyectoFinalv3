@@ -11,25 +11,16 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 {
 
 
-    public partial class UsersPage
+    public partial class AgendaPage
     {
 
         /// <summary>
-        /// ph_actual_admin control.
+        /// ph_agenda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ph_actual_admin;
-
-        /// <summary>
-        /// ph_users control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ph_users;
+        protected global::System.Web.UI.WebControls.PlaceHolder ph_agenda;
     }
 }

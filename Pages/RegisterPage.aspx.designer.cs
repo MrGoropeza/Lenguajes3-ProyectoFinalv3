@@ -24,6 +24,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected global::System.Web.UI.WebControls.TextBox tb_nombre;
 
         /// <summary>
+        /// dni_custom_validator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator dni_custom_validator;
+
+        /// <summary>
         /// tb_dni control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_fecha_nac;
+
+        /// <summary>
+        /// mail_custom_validator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator mail_custom_validator;
 
         /// <summary>
         /// tb_mail control.

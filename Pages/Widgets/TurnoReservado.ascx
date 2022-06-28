@@ -37,14 +37,14 @@
                             <i class="fa fa-times" aria-hidden="true"></i> Cancelar
                         </asp:LinkButton>
                     </li>
-                    <li>
+                    <%--<li>
                         <asp:LinkButton runat="server"
                             CssClass="btn btn-green btn-xsmall"
                             ID="btn_modificar"
                             OnClick="btn_modificar_Click">
                             <i class="fa fa-pencil" aria-hidden="true"></i> Modificar
                         </asp:LinkButton>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
         </div>

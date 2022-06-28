@@ -7,56 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
+namespace Lenguajes3_ProyectoFinalv3.Pages
 {
 
 
-    public partial class TurnoReservado
+    public partial class DatosConsultorio
     {
 
         /// <summary>
-        /// pro_avatar control.
+        /// tb_nombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage pro_avatar;
+        protected global::System.Web.UI.WebControls.TextBox tb_nombre;
 
         /// <summary>
-        /// pro_name control.
+        /// tb_telefono1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor pro_name;
+        protected global::System.Web.UI.WebControls.TextBox tb_telefono1;
 
         /// <summary>
-        /// pro_title control.
+        /// tb_direccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_title;
+        protected global::System.Web.UI.WebControls.TextBox tb_direccion;
 
         /// <summary>
-        /// turno_fecha control.
+        /// tb_mail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl turno_fecha;
+        protected global::System.Web.UI.WebControls.TextBox tb_mail;
 
         /// <summary>
-        /// btn_cancelar control.
+        /// btn_update_profile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_cancelar;
+        protected global::System.Web.UI.WebControls.Button btn_update_profile;
     }
 }

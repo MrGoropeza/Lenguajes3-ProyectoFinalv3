@@ -7,39 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lenguajes3_ProyectoFinalv3
+namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 {
 
 
-    public partial class Dashboard
+    public partial class UserWidget
     {
-
-        /// <summary>
-        /// Head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
-
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// username control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl username;
 
         /// <summary>
         /// user_avatar control.
@@ -48,114 +21,105 @@ namespace Lenguajes3_ProyectoFinalv3
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image user_avatar;
+        protected global::System.Web.UI.HtmlControls.HtmlImage user_avatar;
 
         /// <summary>
-        /// btn_logout control.
+        /// lb_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_logout;
+        protected global::System.Web.UI.WebControls.LinkButton lb_name;
 
         /// <summary>
-        /// agendas_pros control.
+        /// user_title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agendas_pros;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_title;
 
         /// <summary>
-        /// agenda control.
+        /// user_dni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agenda;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_dni;
 
         /// <summary>
-        /// dashboard control.
+        /// user_gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dashboard;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_gender;
 
         /// <summary>
-        /// reservar control.
+        /// user_fecha_nac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reservar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_fecha_nac;
 
         /// <summary>
-        /// cuenta control.
+        /// user_tel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuenta;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_tel1;
 
         /// <summary>
-        /// users control.
+        /// user_correo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl users;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl user_correo;
 
         /// <summary>
-        /// datos_consultorio control.
+        /// esAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl datos_consultorio;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl esAdmin;
 
         /// <summary>
-        /// Contenido control.
+        /// esProfesional control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Contenido;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl esProfesional;
 
         /// <summary>
-        /// numero_consul control.
+        /// btn_admin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numero_consul;
+        protected global::System.Web.UI.WebControls.LinkButton btn_admin;
 
         /// <summary>
-        /// correo_consul control.
+        /// btn_pro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl correo_consul;
-
-        /// <summary>
-        /// Scripts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Scripts;
+        protected global::System.Web.UI.WebControls.LinkButton btn_pro;
     }
 }

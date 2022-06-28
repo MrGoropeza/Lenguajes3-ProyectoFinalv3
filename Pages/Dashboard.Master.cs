@@ -25,10 +25,25 @@ namespace Lenguajes3_ProyectoFinalv3
                     if (Consultorio.usuario_logeado.isAdmin)
                     {
                         users.Visible = true;
+                        agenda.Visible = true;
+                        agendas_pros.Visible = true;
+                        datos_consultorio.Visible = true;
+                    }
+                    else if(Consultorio.usuario_logeado.isProfesional)
+                    {
+                        agenda.Visible = true;
+                        users.Visible = false;
+                        dashboard.Visible = false;
+                        reservar.Visible = false;
+                        agendas_pros.Visible = false;
+                        datos_consultorio.Visible = false;
                     }
                     else
                     {
+                        agendas_pros.Visible = false;
                         users.Visible = false;
+                        agenda.Visible = false;
+                        datos_consultorio.Visible = false;
                     }
                     username.InnerText = Consultorio.usuario_logeado.nombre + " " + Consultorio.usuario_logeado.apellido;
                     if(Consultorio.usuario_logeado.avatar_link != "" && Consultorio.usuario_logeado.avatar_link != null)
@@ -68,6 +83,18 @@ namespace Lenguajes3_ProyectoFinalv3
                     setInactiveAll();
                     users.Attributes["class"] = "active";
                     break;
+                case "agenda":
+                    setInactiveAll();
+                    agenda.Attributes["class"] = "active";
+                    break;
+                case "agendas_pros":
+                    setInactiveAll();
+                    agendas_pros.Attributes["class"] = "active";
+                    break;
+                case "datos_consultorio":
+                    setInactiveAll();
+                    datos_consultorio.Attributes["class"] = "active";
+                    break;
             }
         }
 
@@ -76,6 +103,10 @@ namespace Lenguajes3_ProyectoFinalv3
             dashboard.Attributes["class"] = "";
             reservar.Attributes["class"] = "";
             cuenta.Attributes["class"] = "";
+            users.Attributes["class"] = "";
+            agenda.Attributes["class"] = "";
+            agendas_pros.Attributes["class"] = "";
+            datos_consultorio.Attributes["class"] = "";
         }
 
         protected void btn_logout_Click(object sender, EventArgs e)

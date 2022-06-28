@@ -1,4 +1,5 @@
 ﻿using Lenguajes3_ProyectoFinalv3.Models;
+using Lenguajes3_ProyectoFinalv3.Models.FirebaseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,9 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         Task<List<Usuario>> getProfesionales();
         Task<Usuario> getProfesional(int dni);
         Task<Usuario> getUsuario(int dni);
-        List<Usuario> getPacientes();
-        List<Usuario> getAdmins();
+        Task<List<Usuario>> getUsuarios();
         Turno getTurno(DateTime fecha);
         List<Turno> getTurnosProfesional(int dni);
-        Consulta getConsultaPaciente(int dni);
-        Consulta getConsultaProfesional(int dni);
         Task<List<Turno>> getAgendaProfesional(int dni, DateTime fecha);
 
         Task<List<Turno>> getTurnosPaciente(int dni);
@@ -28,13 +26,16 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         #region insert-create
         void addUser(Usuario user);
         void addTurno(Turno turno);
-        void addConsulta(Consulta consulta);
         #endregion
 
         #region updates
         void updateUser(Usuario usuario);
+
+        void updateDatosConsultorio(DatosConsul consultorio);
         void turnAdmin(int dni);
+        void removeAdmin(int dni);
         void turnProfesional(int dni);
+        void removeProfesional(int dni);
         #endregion
 
         #region delete

@@ -309,7 +309,10 @@
     <Content Include="MedicalAppointmentUI\modify-booked-calendar.html" />
     <Content Include="MedicalAppointmentUI\register.html" />
     <Content Include="Pages\AccountPage.aspx" />
+    <Content Include="Pages\AgendaPage.aspx" />
+    <Content Include="Pages\AgendasProsPage.aspx" />
     <Content Include="Pages\DashboardPage.aspx" />
+    <Content Include="Pages\DatosConsultorio.aspx" />
     <Content Include="Pages\ForgotPasswordPage.aspx" />
     <Content Include="Pages\HomePage.aspx" />
     <Content Include="Pages\LoginPage.aspx" />
@@ -318,9 +321,10 @@
     <Content Include="Pages\RegisterPage.aspx" />
     <Content Include="Pages\ReservarPage.aspx" />
     <Content Include="Pages\UsersPage.aspx" />
+    <Content Include="Pages\Widgets\AgendaWidget.ascx" />
     <Content Include="Pages\Widgets\Profesional.ascx" />
     <Content Include="Pages\Widgets\TurnoReservado.ascx" />
-    <Content Include="Pages\Widgets\UsuarioSinTurnos.ascx" />
+    <Content Include="Pages\Widgets\UserWidget.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +334,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Consulta.cs" />
     <Compile Include="Models\Consultorio.cs" />
-    <Compile Include="Models\FirebaseModels\DatosConsultorio.cs" />
+    <Compile Include="Models\FirebaseModels\DatosConsul.cs" />
     <Compile Include="Models\Turno.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Pages\AccountPage.aspx.cs">
@@ -339,6 +343,20 @@
     </Compile>
     <Compile Include="Pages\AccountPage.aspx.designer.cs">
       <DependentUpon>AccountPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AgendaPage.aspx.cs">
+      <DependentUpon>AgendaPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AgendaPage.aspx.designer.cs">
+      <DependentUpon>AgendaPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AgendasProsPage.aspx.cs">
+      <DependentUpon>AgendasProsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AgendasProsPage.aspx.designer.cs">
+      <DependentUpon>AgendasProsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dashboard.Master.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
@@ -353,6 +371,13 @@
     </Compile>
     <Compile Include="Pages\DashboardPage.aspx.designer.cs">
       <DependentUpon>DashboardPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DatosConsultorio.aspx.cs">
+      <DependentUpon>DatosConsultorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DatosConsultorio.aspx.designer.cs">
+      <DependentUpon>DatosConsultorio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ForgotPasswordPage.aspx.cs">
       <DependentUpon>ForgotPasswordPage.aspx</DependentUpon>
@@ -417,6 +442,13 @@
     <Compile Include="Pages\UsersPage.aspx.designer.cs">
       <DependentUpon>UsersPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Widgets\AgendaWidget.ascx.cs">
+      <DependentUpon>AgendaWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Widgets\AgendaWidget.ascx.designer.cs">
+      <DependentUpon>AgendaWidget.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Widgets\Profesional.ascx.cs">
       <DependentUpon>Profesional.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -431,12 +463,12 @@
     <Compile Include="Pages\Widgets\TurnoReservado.ascx.designer.cs">
       <DependentUpon>TurnoReservado.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Widgets\UsuarioSinTurnos.ascx.cs">
-      <DependentUpon>UsuarioSinTurnos.ascx</DependentUpon>
+    <Compile Include="Pages\Widgets\UserWidget.ascx.cs">
+      <DependentUpon>UserWidget.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Widgets\UsuarioSinTurnos.ascx.designer.cs">
-      <DependentUpon>UsuarioSinTurnos.ascx</DependentUpon>
+    <Compile Include="Pages\Widgets\UserWidget.ascx.designer.cs">
+      <DependentUpon>UserWidget.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\FirebaseAuthenticator.cs" />

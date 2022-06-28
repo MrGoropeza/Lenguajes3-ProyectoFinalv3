@@ -53,7 +53,10 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     Consultorio.profesionales = await Consultorio.database.getProfesionales();
                     foreach (var pro in Consultorio.profesionales)
                     {
-                        dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
+                        if(pro.dni != Consultorio.usuario_logeado.dni)
+                        {
+                            dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
+                        }
                     }
                     dpls_pros.Text = "";
                 }
@@ -261,26 +264,42 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 bool encontrado_en_mismo_horario = false;
                 bool turno_en_el_mismo_dia = false;
                 int index = 0;
-                while (!encontrado_en_mismo_horario && index < Consultorio.turnos_logeado.Count())
+                Consultorio.turnos_logeado = await Consultorio.database.getTurnosPaciente(Consultorio.usuario_logeado.dni);
+                if(Consultorio.turnos_logeado != null)
                 {
-                    if(Consultorio.turnos_logeado[index].slot == nuevo.slot
-                        && Consultorio.turnos_logeado[index].fecha == fecha_selected)
+                    while (!encontrado_en_mismo_horario && index < Consultorio.turnos_logeado.Count())
                     {
-                        encontrado_en_mismo_horario = true;
-                    }else if (Consultorio.turnos_logeado[index].fecha == fecha_selected)
-                    {
-                        turno_en_el_mismo_dia = true;
+                        if (Consultorio.turnos_logeado[index].slot == nuevo.slot
+                            && Consultorio.turnos_logeado[index].fecha == fecha_selected)
+                        {
+                            encontrado_en_mismo_horario = true;
+                        }
+                        else if (Consultorio.turnos_logeado[index].fecha == fecha_selected)
+                        {
+                            turno_en_el_mismo_dia = true;
+                        }
+                        index++;
                     }
-                    index++;
-                }
-                if (encontrado_en_mismo_horario)
-                {
-                    advertencia.InnerText = "Ya tenés un turno en esa fecha y hora.";
-                    advertencia.Visible = true;
-                } else if (turno_en_el_mismo_dia)
-                {
-                    advertencia.InnerText = "Ya tenés un turno ese día. No podés tener dos turnos en un día.";
-                    advertencia.Visible = true;
+                    if (encontrado_en_mismo_horario)
+                    {
+                        advertencia.InnerText = "Ya tenés un turno en esa fecha y hora.";
+                        advertencia.Visible = true;
+                        return;
+                    }
+                    else if (turno_en_el_mismo_dia)
+                    {
+                        advertencia.InnerText = "Ya tenés un turno ese día. No podés tener dos turnos en un día.";
+                        advertencia.Visible = true;
+                        return;
+                    }
+                    else
+                    {
+                        Consultorio.database.addTurno(nuevo);
+                        Consultorio.turnos_logeado =
+                            await Consultorio.database
+                            .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+                        Response.Redirect("DashboardPage.aspx", false);
+                    }
                 }
                 else
                 {
@@ -290,6 +309,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         .getTurnosPaciente(Consultorio.usuario_logeado.dni);
                     Response.Redirect("DashboardPage.aspx", false);
                 }
+                
                 
             }
         }

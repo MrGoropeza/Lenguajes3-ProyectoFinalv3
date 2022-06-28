@@ -27,8 +27,37 @@
                 </div>
             </div>
 
-            <div class="row">
-            </div>
+            <div class="time-book"
+                    runat="server"
+                    id="selector_time"
+                    visible="false">
+
+                    <asp:Label runat="server"
+                        ID="selector_time_day"
+                        AssociatedControlID="rdbtnls_turnos"
+                        Text="Available Appointments on February 18, 2017"/>
+                    <asp:RequiredFieldValidator runat="server"
+                        ValidationGroup="reservar_form" 
+                        ErrorMessage="Selección requerida*"
+                        EnableClientScript="true"
+                        ControlToValidate="rdbtnls_turnos"
+                        ForeColor="Red"/>
+                    <asp:RadioButtonList runat="server"
+                        ID="rdbtnls_turnos"
+                        CssClass="radio"
+                        RepeatDirection="Vertical">
+                    </asp:RadioButtonList>
+
+                    <asp:Button runat="server"
+                        ID="btn_reservar"
+                        CssClass="btn btn-xsmall"
+                        Text="Reservar Turno"
+                        ValidationGroup="reservar_form"
+                        OnClick="btn_reservar_Click"/>
+
+                    
+
+                </div>
 
         </div>
     </div>

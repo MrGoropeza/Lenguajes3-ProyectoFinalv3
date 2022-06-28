@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lenguajes3_ProyectoFinalv3.Models.FirebaseModels
 {
-    public class DatosConsultorio
+    public class DatosConsul
     {
         public string correo { get; set; }
         public string nombre { get; set; }

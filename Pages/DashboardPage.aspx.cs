@@ -13,35 +13,29 @@ namespace Lenguajes3_ProyectoFinalv3
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            Consultorio.turnos_cargados = 0;
+            correo.InnerText = Consultorio.correo;
+            telefono.InnerText = Consultorio.numero;
+            direccion.InnerText = Consultorio.direccion;
+            if(Consultorio.usuario_logeado == null)
             {
-                Consultorio.turnos_cargados = 0;
-                correo.InnerText = Consultorio.correo;
-                telefono.InnerText = Consultorio.numero;
-                direccion.InnerText = Consultorio.direccion;
-                if(Consultorio.usuario_logeado == null)
-                {
-                    Response.Redirect("HomePage.aspx");
-                }
-                else
-                {
-                    var master = (Dashboard)this.Master;
-                    master.setActivePage("dashboard");
-
-
-                    if(Consultorio.turnos_logeado == null)
-                    {
-                        Consultorio.turnos_logeado =
-                            await Consultorio.database
-                            .getTurnosPaciente(Consultorio.usuario_logeado.dni);
-                    }
-
-
-                    cargar_turnos();
-                }
+                Response.Redirect("HomePage.aspx");
             }
             else
             {
+                var master = (Dashboard)this.Master;
+                master.setActivePage("dashboard");
+
+
+                if(Consultorio.turnos_logeado == null)
+                {
+                    Consultorio.turnos_logeado =
+                        await Consultorio.database
+                        .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+                }
+
+
                 cargar_turnos();
             }
         }

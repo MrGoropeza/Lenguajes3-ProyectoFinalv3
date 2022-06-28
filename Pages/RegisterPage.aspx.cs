@@ -100,5 +100,34 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             }
             
         }
+
+        protected async void dni_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            List<Usuario> registrados = await Consultorio.database.getUsuarios();
+            if (registrados.Contains(registrados.Find(user => user.dni == int.Parse(tb_dni.Text))))
+            {
+                args.IsValid = false;
+                dni_custom_validator.Text = "DNI ya registrado";
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
+        protected async void correo_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            List<Usuario> registrados = await Consultorio.database.getUsuarios();
+            if (registrados.Contains(registrados.Find(user => user.correo == tb_mail.Text)))
+            {
+                args.IsValid = false;
+                mail_custom_validator.Text = "Correo ya registrado";
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
+
     }
 }

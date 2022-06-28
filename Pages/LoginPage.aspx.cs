@@ -40,7 +40,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 {
                     Consultorio.token = await Consultorio.auth.iniciarSesion(usuario.correo, tb_password.Text);
                     Consultorio.usuario_logeado = usuario;
-                    Response.Redirect("DashboardPage.aspx");
+                    if (usuario.isProfesional)
+                    {
+                        Response.Redirect("AgendaPage.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("DashboardPage.aspx", false);
+                    }
+                    
                 }
                 else
                 {

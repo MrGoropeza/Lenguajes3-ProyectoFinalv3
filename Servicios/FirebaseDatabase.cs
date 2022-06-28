@@ -19,10 +19,6 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             rtdb = new FirebaseClient(RTDBkey);
         }
 
-        public void addConsulta(Consulta consulta)
-        {
-            throw new NotImplementedException();
-        }
 
         public async void addUser(Usuario usuario)
         {
@@ -36,7 +32,6 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             {
             }
         }
-
         public async void addTurno(Turno turno)
         {
             await rtdb.Child("Turnos")
@@ -45,7 +40,6 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
                 .Child("slot-" + turno.slot.ToString())
                 .PutAsync(turno);
         }
-
         public async Task<List<Turno>> getAgendaProfesional(int dni, DateTime fecha)
         {
             List<Turno> resultado = new List<Turno>();
@@ -57,24 +51,13 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             {
                 resultado.Add(turno.Object);
             }
+            resultado = resultado.OrderBy(turno => turno.slot).ToList();
             return resultado;
         }
-
-        Consulta IDatabase.getConsultaPaciente(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
-        Consulta IDatabase.getConsultaProfesional(int dni)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<string> getDatosConsultorio()
         {
             return getDatosConsultorioFirebase().Result;
         }
-
         private async Task<List<string>> getDatosConsultorioFirebase()
         {
             List<string> list = new List<string>();
@@ -86,34 +69,38 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             }
             return list;
         }
-
         Turno IDatabase.getTurno(DateTime fecha)
         {
             throw new NotImplementedException();
         }
-
         List<Turno> IDatabase.getTurnosProfesional(int dni)
         {
             throw new NotImplementedException();
         }
-
-        public void turnAdmin(int dni)
+        public async void turnAdmin(int dni)
         {
-            throw new NotImplementedException();
+            Usuario user = await rtdb.Child("Usuarios")
+                .Child(dni.ToString()).OnceSingleAsync<Usuario>();
+            user.isAdmin = true;
+            await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .PatchAsync<Usuario>(user);
         }
-
-        public void turnProfesional(int dni)
+        public async void turnProfesional(int dni)
         {
-            throw new NotImplementedException();
+            Usuario user = await rtdb.Child("Usuarios")
+                .Child(dni.ToString()).OnceSingleAsync<Usuario>();
+            user.isProfesional = true;
+            await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .PatchAsync<Usuario>(user);
         }
-
         public async void removeUser(Usuario user)
         {
             await rtdb.Child("Usuarios")
                 .Child(user.dni.ToString)
                 .DeleteAsync();
         }
-
         public async Task<List<Usuario>> getProfesionales()
         {
             List<Usuario> pros = new List<Usuario>();
@@ -126,24 +113,22 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             }
             return pros;
         }
-
         public async Task<Usuario> getUsuario(int dni)
         {
             return await rtdb.Child("Usuarios")
                 .Child(dni.ToString())
                 .OnceSingleAsync<Usuario>();
         }
-
-        public List<Usuario> getPacientes()
+        public async Task<List<Usuario>> getUsuarios()
         {
-            throw new NotImplementedException();
+            List<Usuario> respuesta = new List<Usuario>();
+            var request = await rtdb.Child("Usuarios").OnceAsync<Usuario>();
+            foreach (var user in request)
+            {
+                respuesta.Add(user.Object);
+            }
+            return respuesta;
         }
-
-        public List<Usuario> getAdmins()
-        {
-            throw new NotImplementedException();
-        }
-
         public async void updateUser(Usuario usuario)
         {
             try
@@ -156,7 +141,6 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             {
             }
         }
-
         public async Task<List<Turno>> getTurnosPaciente(int dni)
         {
             List<Turno> turnos = new List<Turno>();
@@ -184,14 +168,12 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             turnos = turnos.OrderBy(turno => turno.fecha).ToList();
             return turnos;
         }
-
         public async Task<Usuario> getProfesional(int dni)
         {
             return await rtdb.Child("Usuarios")
                 .Child(dni.ToString())
                 .OnceSingleAsync<Usuario>();
         }
-
         public async void removeTurno(Turno turno)
         {
             await rtdb.Child("Turnos")
@@ -199,6 +181,29 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
                 .Child(turno.profesionalDNI.ToString())
                 .Child("slot-"+turno.slot.ToString())
                 .DeleteAsync();
+        }
+        public async void removeAdmin(int dni)
+        {
+            Usuario user = await rtdb.Child("Usuarios")
+                .Child(dni.ToString()).OnceSingleAsync<Usuario>();
+            user.isAdmin = false;
+            await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .PatchAsync<Usuario>(user);
+        }
+        public async void removeProfesional(int dni)
+        {
+            Usuario user = await rtdb.Child("Usuarios")
+                .Child(dni.ToString()).OnceSingleAsync<Usuario>();
+            user.isProfesional = false;
+            await rtdb.Child("Usuarios")
+                .Child(dni.ToString())
+                .PatchAsync<Usuario>(user);
+        }
+        public async void updateDatosConsultorio(DatosConsul consultorio)
+        {
+            await rtdb.Child("datos_consultorio")
+                .PatchAsync(consultorio);
         }
     }
 }

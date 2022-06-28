@@ -84,12 +84,15 @@
             <div class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav">
+                    <li runat="server" id="agendas_pros"><i class="fa fa-calendar"></i> <a href="AgendasProsPage.aspx"> Agendas</a> </li>
+                    <li runat="server" id="agenda"><i class="fa fa-calendar"></i> <a href="AgendaPage.aspx"> Tu Agenda</a> </li>
                     <li runat="server" id="dashboard"><i class="fa fa-list-alt"></i> <a href="DashboardPage.aspx"> Tus Turnos</a> </li>
                     <li runat="server" id="reservar"> <i class="fa fa-address-book-o"></i> <a href="ReservarPage.aspx"> Reservar un Turno</a> </li>
                     <li runat="server" id="cuenta"> <i class="fa fa-pencil"></i> <a href="AccountPage.aspx">Mi Cuenta</a> </li>
                     <li runat="server" id="users" visible="false"> <i class="fa fa-user"></i> <a href="UsersPage.aspx">Usuarios</a> </li>
+                    <li runat="server" id="datos_consultorio"> <i class="fa fa-pencil"></i> <a href="DatosConsultorio.aspx">Datos Consultorio</a> </li>
                 </ul>
-                <ul class="nav navbar-nav visible-mobile">
+                <%--<ul class="nav navbar-nav visible-mobile">
                     <li> <a href="HomePage.aspx">Home Landing Page</a> </li>
                     <li> <a href="LoginPage.aspx">Login Page</a> </li>
                     <li> <a href="RegisterPage.aspx">Register Page</a> </li>
@@ -99,7 +102,7 @@
                     <li> <a href="modify-booked-calendar.html">Modify an Appointment</a> </li>
                     <li> <a href="appointments-reserved-empty.html">Appointments Empty</a> </li>
                     <li> <a href="404-page.html">Error Page - 404</a> </li>
-                </ul>
+                </ul>--%>
             </div>
         </div>
     </nav>

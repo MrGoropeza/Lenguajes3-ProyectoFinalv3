@@ -7,155 +7,191 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lenguajes3_ProyectoFinalv3
+namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 {
 
 
-    public partial class Dashboard
+    public partial class AgendaWidget
     {
 
         /// <summary>
-        /// Head control.
+        /// advertencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Head;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl advertencia;
 
         /// <summary>
-        /// form1 control.
+        /// tabla control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Table tabla;
 
         /// <summary>
-        /// username control.
+        /// btn_anterior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl username;
+        protected global::System.Web.UI.WebControls.LinkButton btn_anterior;
 
         /// <summary>
-        /// user_avatar control.
+        /// btn_siguiente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image user_avatar;
+        protected global::System.Web.UI.WebControls.LinkButton btn_siguiente;
 
         /// <summary>
-        /// btn_logout control.
+        /// slot1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_logout;
+        protected global::System.Web.UI.WebControls.TableRow slot1;
 
         /// <summary>
-        /// agendas_pros control.
+        /// slot2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agendas_pros;
+        protected global::System.Web.UI.WebControls.TableRow slot2;
 
         /// <summary>
-        /// agenda control.
+        /// slot3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agenda;
+        protected global::System.Web.UI.WebControls.TableRow slot3;
 
         /// <summary>
-        /// dashboard control.
+        /// slot4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dashboard;
+        protected global::System.Web.UI.WebControls.TableRow slot4;
 
         /// <summary>
-        /// reservar control.
+        /// slot5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reservar;
+        protected global::System.Web.UI.WebControls.TableRow slot5;
 
         /// <summary>
-        /// cuenta control.
+        /// slot6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cuenta;
+        protected global::System.Web.UI.WebControls.TableRow slot6;
 
         /// <summary>
-        /// users control.
+        /// slot7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl users;
+        protected global::System.Web.UI.WebControls.TableRow slot7;
 
         /// <summary>
-        /// datos_consultorio control.
+        /// slot8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl datos_consultorio;
+        protected global::System.Web.UI.WebControls.TableRow slot8;
 
         /// <summary>
-        /// Contenido control.
+        /// slot9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Contenido;
+        protected global::System.Web.UI.WebControls.TableRow slot9;
 
         /// <summary>
-        /// numero_consul control.
+        /// slot10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numero_consul;
+        protected global::System.Web.UI.WebControls.TableRow slot10;
 
         /// <summary>
-        /// correo_consul control.
+        /// slot11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl correo_consul;
+        protected global::System.Web.UI.WebControls.TableRow slot11;
 
         /// <summary>
-        /// Scripts control.
+        /// slot12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Scripts;
+        protected global::System.Web.UI.WebControls.TableRow slot12;
+
+        /// <summary>
+        /// slot13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow slot13;
+
+        /// <summary>
+        /// slot14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow slot14;
+
+        /// <summary>
+        /// slot15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow slot15;
+
+        /// <summary>
+        /// slot16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow slot16;
     }
 }

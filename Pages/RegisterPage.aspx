@@ -62,6 +62,13 @@
                                         ErrorMessage="DNI no válido"
                                         ValidationGroup="register_form"
                                         ForeColor="Red"/>
+                                    <asp:CustomValidator runat="server"
+                                        ValidateEmptyText="true"
+                                        ID="dni_custom_validator"
+                                        ControlToValidate="tb_dni"
+                                        ValidationGroup="register_form"
+                                        OnServerValidate="dni_ServerValidate"
+                                        ForeColor="Red"/>
                                     <asp:TextBox runat="server"
                                         TextMode="Number"
                                         MaxLength="8"
@@ -178,6 +185,13 @@
                                         ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                                         ValidationGroup="register_form"
                                         ErrorMessage="Correo no válido"
+                                        ForeColor="Red"/>
+                                    <asp:CustomValidator runat="server"
+                                        ValidateEmptyText="true"
+                                        ID="mail_custom_validator"
+                                        ControlToValidate="tb_mail"
+                                        ValidationGroup="register_form"
+                                        OnServerValidate="correo_ServerValidate"
                                         ForeColor="Red"/>
                                     <asp:TextBox runat="server"
                                         ID="tb_mail"

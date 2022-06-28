@@ -11,43 +11,34 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 {
 
 
-    public partial class ModifyTurnoPage
+    public partial class AgendasProsPage
     {
 
         /// <summary>
-        /// selector_time control.
+        /// dpls_validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selector_time;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator dpls_validator;
 
         /// <summary>
-        /// selector_time_day control.
+        /// dpls_pros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label selector_time_day;
+        protected global::System.Web.UI.WebControls.DropDownList dpls_pros;
 
         /// <summary>
-        /// rdbtnls_turnos control.
+        /// ph_agenda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbtnls_turnos;
-
-        /// <summary>
-        /// btn_reservar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_reservar;
+        protected global::System.Web.UI.WebControls.PlaceHolder ph_agenda;
     }
 }
