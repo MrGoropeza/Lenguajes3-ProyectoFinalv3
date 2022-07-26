@@ -9,12 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace Lenguajes3_ProyectoFinalv3
 {
-    public partial class HomePage : System.Web.UI.Page
+    public partial class DashboardPage : System.Web.UI.Page
     {
         protected async void Page_Load(object sender, EventArgs e)
         {
-
-            Consultorio.turnos_cargados = 0;
             correo.InnerText = Consultorio.correo;
             telefono.InnerText = Consultorio.numero;
             direccion.InnerText = Consultorio.direccion;
@@ -27,16 +25,24 @@ namespace Lenguajes3_ProyectoFinalv3
                 var master = (Dashboard)this.Master;
                 master.setActivePage("dashboard");
 
+                if (!IsPostBack)
+                {
+                    Consultorio.turnos_logeado =
+                        await Consultorio.database
+                        .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+                }
+                else
+                {
+                    ph_turnos.Controls.Clear();
+                }
+                
                 cargar_turnos();
             }
         }
 
-        private async void cargar_turnos()
+        public async void cargar_turnos()
         {
-            Consultorio.turnos_logeado =
-                await Consultorio.database
-                .getTurnosPaciente(Consultorio.usuario_logeado.dni);
-            
+            ph_turnos.Controls.Clear();
             if (Consultorio.turnos_logeado != null)
             {
                 if(Consultorio.turnos_logeado.Count == 0)
@@ -50,6 +56,11 @@ namespace Lenguajes3_ProyectoFinalv3
                     TurnoReservado turno_widget = (TurnoReservado)LoadControl("Widgets/TurnoReservado.ascx");
                     turno_widget.Turno = turno;
                     turno_widget.Profesional = await Consultorio.database.getProfesional(turno.profesionalDNI);
+                    turno_widget.pagina = this;
+                    System.Diagnostics.Debug.WriteLine("Turno puesto en vista:\n" +
+                        "Slot: " + turno.slot + "\n" +
+                        "Fecha: " + turno.fecha.ToString() + "\n" +
+                        "ProfesionalDNI: " + turno.profesionalDNI);
                     ph_turnos.Controls.Add(turno_widget);
                 }
             }

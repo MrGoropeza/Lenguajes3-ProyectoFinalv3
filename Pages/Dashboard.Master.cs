@@ -28,15 +28,17 @@ namespace Lenguajes3_ProyectoFinalv3
                         agenda.Visible = true;
                         agendas_pros.Visible = true;
                         datos_consultorio.Visible = true;
+                        reservar_link.Attributes["href"] = "ReservarAdminPage.aspx";
                     }
                     else if(Consultorio.usuario_logeado.isProfesional)
                     {
                         agenda.Visible = true;
                         users.Visible = false;
                         dashboard.Visible = false;
-                        reservar.Visible = false;
+                        reservar.Visible = true;
                         agendas_pros.Visible = false;
                         datos_consultorio.Visible = false;
+                        reservar_link.Attributes["href"] = "ReservarAdminPage.aspx";
                     }
                     else
                     {
@@ -44,6 +46,7 @@ namespace Lenguajes3_ProyectoFinalv3
                         users.Visible = false;
                         agenda.Visible = false;
                         datos_consultorio.Visible = false;
+                        reservar_link.Attributes["href"] = "ReservarPage.aspx";
                     }
                     username.InnerText = Consultorio.usuario_logeado.nombre + " " + Consultorio.usuario_logeado.apellido;
                     if(Consultorio.usuario_logeado.avatar_link != "" && Consultorio.usuario_logeado.avatar_link != null)

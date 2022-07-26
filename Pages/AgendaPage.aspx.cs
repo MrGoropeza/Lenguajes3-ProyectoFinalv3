@@ -47,6 +47,24 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 .AddDays(7 * Consultorio.semanaActualAgenda);
         }
 
+        protected void btn_hoy_Click(object sender, EventArgs e)
+        {
+            Consultorio.semanaActualAgenda = 0;
+            agenda.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+        }
 
+        protected void btn_refresh_Click(object sender, EventArgs e)
+        {
+            agenda.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+        }
+
+        protected void btn_print_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

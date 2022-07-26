@@ -13,6 +13,7 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         #region selects-read
         List<string> getDatosConsultorio();
         Task<List<Usuario>> getProfesionales();
+        Task<List<Usuario>> getPacientes();
         Task<Usuario> getProfesional(int dni);
         Task<Usuario> getUsuario(int dni);
         Task<List<Usuario>> getUsuarios();

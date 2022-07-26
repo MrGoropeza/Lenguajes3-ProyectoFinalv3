@@ -30,6 +30,8 @@ namespace Lenguajes3_ProyectoFinalv3.Models
 
         public static int semanaActualAgenda = 0;
 
+        public static int semanaActualPro = 0;
+
         public static AgendaWidget agendaActual;
 
         public static void initFirebase()
@@ -135,4 +137,10 @@ namespace Lenguajes3_ProyectoFinalv3.Models
             return respuesta;
         }
     }
+}
+
+
+enum slots
+{
+    slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11, slot12, slot13, slot14, slot15, slot16
 }

@@ -116,6 +116,18 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             }
             return pros;
         }
+        public async Task<List<Usuario>> getPacientes()
+        {
+            List<Usuario> pros = new List<Usuario>();
+            var query = await rtdb.Child("Usuarios")
+                .OnceAsync<Usuario>();
+            var queryWhere = query.Where(user => !user.Object.isProfesional && !user.Object.isAdmin);
+            foreach (var item in queryWhere)
+            {
+                pros.Add(item.Object);
+            }
+            return pros;
+        }
         public async Task<Usuario> getUsuario(int dni)
         {
             return await rtdb.Child("Usuarios")

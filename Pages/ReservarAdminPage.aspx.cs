@@ -53,10 +53,14 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     Consultorio.profesionales = await Consultorio.database.getProfesionales();
                     foreach (var pro in Consultorio.profesionales)
                     {
-                        if (pro.dni != Consultorio.usuario_logeado.dni)
-                        {
-                            dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
-                        }
+                        dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
+                    }
+
+                    List<Usuario> pacientes = await Consultorio.database.getPacientes();
+                    foreach(var usuario in pacientes)
+                    {
+                        dpls_user.Items
+                            .Add(new ListItem(usuario.nombre + " " + usuario.apellido, usuario.dni.ToString()));
                     }
 
                     //if (Consultorio.usuario_logeado.isAdmin)
@@ -112,7 +116,9 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             //{
             //    rfv_user.IsValid = true;
             //}
-            if (dpls_validator.IsValid && tb_fecha_validator.IsValid)
+            if (dpls_validator.IsValid
+                && tb_fecha_validator.IsValid
+                && rfv_user.IsValid)
             {
                 dpls_validator.Visible = false;
                 dpls_validator.IsValid = true;
@@ -125,38 +131,53 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         advertencia.Visible = true;
                         return;
                     }
-                    else if (fecha_selected == DateTime.Today)
-                    {
-                        advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
-                        advertencia.Visible = true;
-                        return;
-                    }
+                    //else if(fecha_selected == DateTime.Today)
+                    //{
+                    //    advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
+                    //    advertencia.Visible = true;
+                    //    return;
+                    //}
                     advertencia.Visible = false;
                     Usuario pro_selected = Consultorio.profesionales.
                         Where(pro => pro.dni.ToString() == dpls_pros.SelectedItem.Value).First();
+                    Usuario user_selected = await Consultorio.database.getUsuario(Convert.ToInt32(dpls_user.SelectedValue));
                     List<Turno> turnos = await Consultorio.database.getAgendaProfesional(pro_selected.dni, fecha_selected);
                     DateTime hora = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day
                             , 10, 0, 0);
                     rdbtnls_turnos.Items.Clear();
+
+                    //var ctl_prueba = new ListItem("hola", "22", true);
+                    //ctl_prueba.Attributes.CssStyle.Add("color", "blue");
+                    //rdbtnls_turnos.Items.Add(ctl_prueba);
+
+
 
                     //revisar si ya tiene un turno reservado ese día
 
 
                     for (int i = 0; i < 4; i++)
                     {
-                        rdbtnls_turnos.Items.Add(new ListItem(
-                            hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
-                            , i.ToString()
-                        ));
+                        if (hora > DateTime.Now)
+                        {
+                            rdbtnls_turnos.Items.Add(new ListItem(
+                                hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
+                                , i.ToString()
+                            ));
+                        }
+
                         hora = hora.AddMinutes(30);
+
                     }
                     hora = hora.AddHours(2);
                     for (int i = 4; i < 16; i++)
                     {
-                        rdbtnls_turnos.Items.Add(new ListItem(
-                            hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
-                            , i.ToString()
-                        ));
+                        if (hora > DateTime.Now)
+                        {
+                            rdbtnls_turnos.Items.Add(new ListItem(
+                                hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
+                                , i.ToString()
+                            ));
+                        }
                         hora = hora.AddMinutes(30);
                     }
 
@@ -266,6 +287,12 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 tb_fecha_validator.Visible = true;
                 tb_fecha_validator.IsValid = false;
             }
+            if (dpls_user.SelectedValue == "0")
+            {
+                rfv_user.Visible = true;
+                rfv_user.IsValid = false;
+            }
+
             //if (Consultorio.usuario_logeado.isAdmin)
             //{
             //    if (dpls_user.SelectedValue == "0")
@@ -278,39 +305,43 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             //{
             //    rfv_user.IsValid = true;
             //}
-
-            if (dpls_validator.IsValid && tb_fecha_validator.IsValid)
+            if (dpls_validator.IsValid
+                && tb_fecha_validator.IsValid
+                && rfv_user.IsValid)
             {
+
                 Turno nuevo = new Turno();
+                Usuario user_selected = await Consultorio.database.getUsuario(Convert.ToInt32(dpls_user.SelectedValue));
                 Usuario pro_selected = Consultorio.profesionales.
                 Where(pro => pro.dni.ToString() == dpls_pros.SelectedItem.Value).First();
                 nuevo.slot = Convert.ToInt32(rdbtnls_turnos.SelectedValue);
-                nuevo.pacienteDNI = Consultorio.usuario_logeado.dni;
+                nuevo.pacienteDNI = user_selected.dni;
                 nuevo.fecha = fecha_selected;
                 nuevo.profesionalDNI = pro_selected.dni;
 
                 bool encontrado_en_mismo_horario = false;
                 bool turno_en_el_mismo_dia = false;
                 int index = 0;
-                Consultorio.turnos_logeado = await Consultorio.database.getTurnosPaciente(Consultorio.usuario_logeado.dni);
 
-                if (Consultorio.turnos_logeado != null)
+                List<Turno> turnosPaciente = await Consultorio.database.getTurnosPaciente(user_selected.dni);
+
+                if (turnosPaciente != null)
                 {
-                    while (!encontrado_en_mismo_horario && index < Consultorio.turnos_logeado.Count())
+                    while (!encontrado_en_mismo_horario && index < turnosPaciente.Count())
                     {
                         System.Diagnostics.Debug.WriteLine("Iteración " + index + ": \n" +
-                            "  " + Consultorio.turnos_logeado[index].slot + " == " + nuevo.slot + "\n" +
-                            "  " + Consultorio.turnos_logeado[index].fecha + " == " + fecha_selected);
-                        if (Consultorio.turnos_logeado[index].slot == nuevo.slot
-                            && Consultorio.turnos_logeado[index].fecha.Day == fecha_selected.Day
-                            && Consultorio.turnos_logeado[index].fecha.Month == fecha_selected.Month
-                            && Consultorio.turnos_logeado[index].fecha.Year == fecha_selected.Year)
+                            "  " + turnosPaciente[index].slot + " == " + nuevo.slot + "\n" +
+                            "  " + turnosPaciente[index].fecha + " == " + fecha_selected);
+                        if (turnosPaciente[index].slot == nuevo.slot
+                            && turnosPaciente[index].fecha.Day == fecha_selected.Day
+                            && turnosPaciente[index].fecha.Month == fecha_selected.Month
+                            && turnosPaciente[index].fecha.Year == fecha_selected.Year)
                         {
                             encontrado_en_mismo_horario = true;
                         }
-                        else if (Consultorio.turnos_logeado[index].fecha.Day == fecha_selected.Day
-                            && Consultorio.turnos_logeado[index].fecha.Month == fecha_selected.Month
-                            && Consultorio.turnos_logeado[index].fecha.Year == fecha_selected.Year)
+                        else if (turnosPaciente[index].fecha.Day == fecha_selected.Day
+                            && turnosPaciente[index].fecha.Month == fecha_selected.Month
+                            && turnosPaciente[index].fecha.Year == fecha_selected.Year)
                         {
                             turno_en_el_mismo_dia = true;
                         }
@@ -318,13 +349,13 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     }
                     if (encontrado_en_mismo_horario)
                     {
-                        advertencia.InnerText = "Ya tenés un turno en esa fecha y hora.";
+                        advertencia.InnerText = "El paciente ya tiene un turno en esa fecha y hora.";
                         advertencia.Visible = true;
                         return;
                     }
                     else if (turno_en_el_mismo_dia)
                     {
-                        advertencia.InnerText = "Ya tenés un turno ese día. No podés tener dos turnos en un día.";
+                        advertencia.InnerText = "El paciente ya tiene un turno ese día. No puede tener dos turnos en un día.";
                         advertencia.Visible = true;
                         return;
                     }
@@ -335,7 +366,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         Consultorio.turnos_logeado =
                             await Consultorio.database
                             .getTurnosPaciente(Consultorio.usuario_logeado.dni);
-                        GMailProvider.mandarInfoTurno(nuevo, Consultorio.usuario_logeado);
+                        GMailProvider.mandarInfoTurno(nuevo, user_selected);
                         Response.Redirect("DashboardPage.aspx", false);
                     }
                 }
@@ -345,7 +376,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     Consultorio.turnos_logeado =
                         await Consultorio.database
                         .getTurnosPaciente(Consultorio.usuario_logeado.dni);
-                    GMailProvider.mandarInfoTurno(nuevo, Consultorio.usuario_logeado);
+                    GMailProvider.mandarInfoTurno(nuevo, user_selected);
                     Response.Redirect("DashboardPage.aspx", false);
                 }
 
@@ -355,7 +386,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 
         protected void reg_user_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegisterPage.aspx?a=1", false);
+            Response.Redirect("RegisterPacientePage.aspx", false);
         }
     }
 }

@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="../MedicalAppointmentUI/css/styleBookAppointment.css" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="Contenido" runat="server">
-    <div class="main-container">
-        <div class="container">
+    <div class="container">
+        <div class="main-container">
             <div class="row">
 
                 <div class="col-lg-12">
@@ -63,14 +63,14 @@
                         <a href="ProfessionalsPage.aspx" class="know-doctors">¿No conoces a nuestros profesionales?</a>
 
 
-                        <%--<asp:LinkButton runat="server" ID="reg_user"
+                        <asp:LinkButton runat="server" ID="reg_user"
                             OnClick="reg_user_Click"
                             Text="Registrar un Usuario">
 
                         </asp:LinkButton>
-                        --%>
+                        
                         <!--Select user-->
-                        <%--<div runat="server" id="selector_user">
+                        <div runat="server" id="selector_user">
                         <asp:Label runat="server"
                             AssociatedControlID="dpls_user"
                             Text="Usuario:" />
@@ -88,7 +88,7 @@
                             CausesValidation="true">
                             <asp:ListItem Value="0">Selecciona un usuario</asp:ListItem>
                         </asp:DropDownList>
-                        </div>--%>
+                        </div>
                         <!--Select user-->
 
                         <asp:LinkButton runat="server"

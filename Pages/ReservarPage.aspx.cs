@@ -126,12 +126,12 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         advertencia.Visible = true;
                         return;
                     }
-                    else if(fecha_selected == DateTime.Today)
-                    {
-                        advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
-                        advertencia.Visible = true;
-                        return;
-                    }
+                    //else if(fecha_selected == DateTime.Today)
+                    //{
+                    //    advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
+                    //    advertencia.Visible = true;
+                    //    return;
+                    //}
                     advertencia.Visible = false;
                     Usuario pro_selected = Consultorio.profesionales.
                         Where(pro => pro.dni.ToString() == dpls_pros.SelectedItem.Value).First();
@@ -140,24 +140,38 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                             , 10, 0, 0);
                     rdbtnls_turnos.Items.Clear();
 
+                    //var ctl_prueba = new ListItem("hola", "22", true);
+                    //ctl_prueba.Attributes.CssStyle.Add("color", "blue");
+                    //rdbtnls_turnos.Items.Add(ctl_prueba);
+
+
+
                     //revisar si ya tiene un turno reservado ese día
 
 
                     for (int i = 0; i < 4; i++)
                     {
-                        rdbtnls_turnos.Items.Add(new ListItem(
-                            hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
-                            , i.ToString()
-                        ));
+                        if(hora > DateTime.Now)
+                        {
+                            rdbtnls_turnos.Items.Add(new ListItem(
+                                hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
+                                , i.ToString()
+                            ));
+                        }
+
                         hora = hora.AddMinutes(30);
+
                     }
                     hora = hora.AddHours(2);
                     for (int i = 4; i < 16; i++)
                     {
-                        rdbtnls_turnos.Items.Add(new ListItem(
-                            hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
-                            , i.ToString()
-                        ));
+                        if (hora > DateTime.Now)
+                        {
+                            rdbtnls_turnos.Items.Add(new ListItem(
+                                hora.ToString("HH:mm") + " - " + hora.AddMinutes(30).ToString("HH:mm")
+                                , i.ToString()
+                            ));
+                        }
                         hora = hora.AddMinutes(30);
                     }
 
@@ -357,6 +371,17 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected void reg_user_Click(object sender, EventArgs e)
         {
             Response.Redirect("RegisterPage.aspx?a=1",false);
+        }
+
+        protected void rdbtnls_turnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in rdbtnls_turnos.Items)
+            {
+                string color = item.Selected ? "Blue" : "Black";
+                item.Attributes.CssStyle.Add("color",color);
+
+                
+            }
         }
     }
 }

@@ -148,7 +148,9 @@
                     <asp:RadioButtonList runat="server"
                         ID="rdbtnls_turnos"
                         CssClass="radio"
-                        RepeatDirection="Vertical">
+                        RepeatDirection="Vertical"
+                        OnSelectedIndexChanged="rdbtnls_turnos_SelectedIndexChanged"
+                        AutoPostBack="true">
                         <%--<asp:ListItem value="0" Text="10:00 - 10:30"></asp:ListItem>
                         <asp:ListItem value="1" Text="10:30 - 11:00"></asp:ListItem>
                         <asp:ListItem value="2" Text="11:00 - 11:30"></asp:ListItem>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" Async="true" MasterPageFile="Dashboard.Master" AutoEventWireup="true" CodeBehind="DashboardPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.HomePage" %>  
+﻿<%@ Page Title="" Language="C#" Async="true" MasterPageFile="Dashboard.Master" AutoEventWireup="true" CodeBehind="DashboardPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.DashboardPage" %>  
 
 <asp:Content ID="ContenidoHeaderDashboardPage" ContentPlaceHolderID="Head" runat="server">
     <title>Tus Turnos</title>

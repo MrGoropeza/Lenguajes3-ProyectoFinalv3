@@ -77,6 +77,9 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 
                             celda.Text = "<p>" + paciente.nombre + " " + paciente.apellido + "</p>"
                                 + "\nDNI: " + paciente.dni;
+                            celda.ForeColor = System.Drawing.Color.Black;
+                            celda.BackColor = System.Drawing.Color.Yellow;
+
                             tabla.Rows[i + 2].Cells.Add(celda);
                         }
                         else
@@ -85,12 +88,17 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
                             if (Consultorio.dateTimeFromSlot(i, lunes) < DateTime.Now)
                             {
                                 celda.Text = "Pasado";
+                                celda.ForeColor = System.Drawing.Color.White;
+                                celda.BackColor = System.Drawing.Color.DarkRed;
+                                celda.Attributes["class"] = "passdate";
                             }
                             else
                             {
                                 celda.Text = "Libre";
+                                celda.ForeColor = System.Drawing.Color.White;
+                                celda.BackColor = System.Drawing.Color.DarkGreen;
                             }
-                            celda.Attributes["class"] = "passdate";
+                            
                             tabla.Rows[i + 2].Cells.Add(celda);
                         }
                     }

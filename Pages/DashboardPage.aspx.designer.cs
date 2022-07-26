@@ -11,7 +11,7 @@ namespace Lenguajes3_ProyectoFinalv3
 {
 
 
-    public partial class HomePage
+    public partial class DashboardPage
     {
 
         /// <summary>

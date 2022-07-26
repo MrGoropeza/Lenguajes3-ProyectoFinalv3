@@ -16,13 +16,16 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         {
             var e = new CalendarEvent
             {
-                Start = new CalDateTime(Consultorio.dateTimeFromSlot(turno.slot, turno.fecha)),
+                Start = new CalDateTime(Consultorio.dateTimeFromSlot(turno.slot, turno.fecha), ""),
                 End = new CalDateTime(Consultorio.dateTimeFromSlot(turno.slot, turno.fecha).AddMinutes(30)),
                 Location = Consultorio.direccion,
                 Summary = "Consulta en " + Consultorio.nombre,
                 Description = "Consulta psicológica con " + profesional.profesional_titulo + ", " + profesional.nombre + " " + profesional.apellido,
-                Uid = Guid.NewGuid().ToString()
+                Uid = Guid.NewGuid().ToString(),
             };
+
+            System.Diagnostics.Debug.WriteLine("Fecha puesta en el correo:");
+            System.Diagnostics.Debug.WriteLine("\t" + Consultorio.dateTimeFromSlot(turno.slot, turno.fecha).ToString());
 
             var alarma = new Alarm
             {
@@ -50,9 +53,10 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             };
 
             e.Attendees = new List<Attendee> { datosProfesional, datosPaciente };
-            
+
 
             var calendar = new Calendar();
+            calendar.AddTimeZone(new VTimeZone("Argentina Standard Time"));
             calendar.Events.Add(e);
 
             var serializer = new CalendarSerializer();

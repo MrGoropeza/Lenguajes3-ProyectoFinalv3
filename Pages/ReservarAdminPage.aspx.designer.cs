@@ -51,6 +51,42 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected global::System.Web.UI.WebControls.TextBox tb_fecha;
 
         /// <summary>
+        /// reg_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton reg_user;
+
+        /// <summary>
+        /// selector_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selector_user;
+
+        /// <summary>
+        /// rfv_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_user;
+
+        /// <summary>
+        /// dpls_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpls_user;
+
+        /// <summary>
         /// btn_agenda control.
         /// </summary>
         /// <remarks>

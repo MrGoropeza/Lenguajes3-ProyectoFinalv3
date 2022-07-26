@@ -37,10 +37,25 @@
             </asp:LinkButton>
 
             <asp:LinkButton runat="server"
+                
+                CssClass="btn btn-xsmall"
+                ID="btn_hoy"
+                OnClick="btn_hoy_Click">
+                <i class="fa fa-arrow-circle-down"></i> Esta Semana
+            </asp:LinkButton>
+
+            <asp:LinkButton runat="server"
                 CssClass="btn btn-xsmall"
                 ID="btn_siguiente"
                 OnClick="btn_siguiente_Click">
                 <i class="fa fa-arrow-right"></i> Semana Siguiente
+            </asp:LinkButton>
+
+            <asp:LinkButton runat="server"
+                CssClass="btn btn-xsmall"
+                ID="btn_refresh"
+                OnClick="btn_refresh_Click">
+                <i class="fa fa-refresh"></i> Recargar
             </asp:LinkButton>
 
             <asp:PlaceHolder runat="server" ID="ph_agenda">

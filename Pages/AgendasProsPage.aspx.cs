@@ -45,10 +45,14 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 ph_agenda.Controls.Add(Consultorio.agendaActual);
                 btn_anterior.Visible = true;
                 btn_siguiente.Visible = true;
+                btn_hoy.Visible = true;
+                btn_refresh.Visible = true;
             }
             else{
                 btn_anterior.Visible = false;
                 btn_siguiente.Visible = false;
+                btn_hoy.Visible = false;
+                btn_refresh.Visible = false;
             }
                 
             
@@ -66,6 +70,8 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 ph_agenda.Controls.Add(Consultorio.agendaActual);
                 btn_anterior.Visible = true;
                 btn_siguiente.Visible = true;
+                btn_hoy.Visible = true;
+                btn_refresh.Visible = true;
             }
             
         }
@@ -82,6 +88,21 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected void btn_siguiente_Click(object sender, EventArgs e)
         {
             Consultorio.semanaActualAgenda += 1;
+            Consultorio.agendaActual.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+        }
+
+        protected void btn_hoy_Click(object sender, EventArgs e)
+        {
+            Consultorio.semanaActualAgenda = 0;
+            Consultorio.agendaActual.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+        }
+
+        protected void btn_refresh_Click(object sender, EventArgs e)
+        {
             Consultorio.agendaActual.Lunes = DateTime.Today
                 .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
                 .AddDays(7 * Consultorio.semanaActualAgenda);

@@ -14,6 +14,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         {
             if (!IsPostBack)
             {
+                advertencia.Visible = false;
                 try
                 {
                     var query_dni = Request.QueryString["dni"];
@@ -52,7 +53,8 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 }
                 else
                 {
-                    Response.Write("No estás registrado.");
+                    advertencia.InnerText = "No estás registrado.";
+                    advertencia.Visible = true;
                 }
 
                 
@@ -61,7 +63,12 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             }
             catch (Exception exp)
             {
-                Response.Write(exp.Message);
+                string error = exp.Message;
+                advertencia.InnerText = 
+                    error.Contains("WrongPassword") ? 
+                        "Contraseña incorrecta." :
+                        "Hubo un error al intentar iniciar sesión, por favor intenta de nuevo.";
+                advertencia.Visible = true;
                 Consultorio.usuario_logeado = null;
                 Consultorio.token = null;
             }

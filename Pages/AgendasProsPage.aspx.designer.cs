@@ -42,6 +42,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected global::System.Web.UI.WebControls.LinkButton btn_anterior;
 
         /// <summary>
+        /// btn_hoy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_hoy;
+
+        /// <summary>
         /// btn_siguiente control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_siguiente;
+
+        /// <summary>
+        /// btn_refresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_refresh;
 
         /// <summary>
         /// ph_agenda control.

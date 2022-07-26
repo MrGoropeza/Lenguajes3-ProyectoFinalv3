@@ -23,18 +23,27 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             try
             {
                 Usuario user = await Consultorio.database.getUsuario(int.Parse(tb_dni.Text));
-                try
+                if(user != null)
                 {
-                    Consultorio.auth.recuperarContra(user.correo);
-                    advertencia.InnerText = "Email de Reseteo enviado a " + user.correo + ". Ya podés volver a inicio de sesión.";
+                    try
+                    {
+                        Consultorio.auth.recuperarContra(user.correo);
+                        advertencia.InnerText = "Email de Reseteo enviado a " + user.correo + ". Ya podés volver a inicio de sesión.";
+                        advertencia.Visible = true;
+                    }
+                    catch (Exception)
+                    {
+                        advertencia.InnerText = "Error al mandar correo de recuperación, intente de nuevo.";
+                        advertencia.Visible = true;
+                        
+                    }
+                }
+                else
+                {
+                    advertencia.InnerText = "No estás registrado.";
                     advertencia.Visible = true;
                 }
-                catch (Exception)
-                {
-                    advertencia.InnerText = "Error al mandar correo de recuperación, intente de nuevo.";
-                    advertencia.Visible = true;
-                    throw;
-                }
+                
                 
             }
             catch (Exception)

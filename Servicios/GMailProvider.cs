@@ -61,6 +61,65 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
             await smtp.SendMailAsync(mensaje);
         }
 
+        public async static void mandarInfoTurnoCancelado(Turno turno, Usuario paciente)
+        {
+            MailMessage mensaje = new MailMessage();
+            mensaje.From = new MailAddress("goropeza8@gmail.com", Consultorio.nombre);
+            mensaje.To.Add(paciente.correo);
+            mensaje.Subject = "Cancelaste un turno en " + Consultorio.nombre;
+
+            mensaje.IsBodyHtml = false;
+            Usuario profesional = await Consultorio.database.getProfesional(turno.profesionalDNI);
+            mensaje.Body = "Tu turno en " + Consultorio.nombre + " fue cancelado correctamente.\n"
+                         + "  Detalles del turno: \n"
+                         + "   - Dia: " + turno.fecha.ToString("dd/MM/yyyy") + "\n"
+                         + "   - Hora: " + Consultorio.hourFromSlot(turno.slot) + "\n"
+                         + "   - Profesional: " + profesional.nombre + " " + profesional.apellido;
+
+            List<string> toUsers = new List<string>();
+            toUsers.Add(paciente.correo);
+            toUsers.Add(profesional.correo);
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            System.Net.NetworkCredential credenciales = new System.Net.NetworkCredential();
+
+            credenciales.UserName = "goropeza8@gmail.com";
+            credenciales.Password = "yekszxwkgckbyokv";
+
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = credenciales;
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            await smtp.SendMailAsync(mensaje);
+        }
+
+        public async static void mandarInfoCuentaCreada(Usuario nuevo, string password)
+        {
+            MailMessage mensaje = new MailMessage();
+            mensaje.From = new MailAddress("goropeza8@gmail.com", Consultorio.nombre);
+            mensaje.To.Add(nuevo.correo);
+            mensaje.Subject = "Información de tu cuenta en " + Consultorio.nombre;
+
+            mensaje.IsBodyHtml = false;
+            mensaje.Body = "Tu cuenta en " + Consultorio.nombre + " fue creada correctamente.\n"
+                         + "  Para ingresar, utilizá tu DNI y la siguiente contraseña: \n" +
+                           "    " + password + "\n" +
+                           "  No te olvides de cambiar la contraseña en la pestaña \"Mi cuenta\" cuando inicies sesión en el Sistema.";
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            System.Net.NetworkCredential credenciales = new System.Net.NetworkCredential();
+
+            credenciales.UserName = "goropeza8@gmail.com";
+            credenciales.Password = "yekszxwkgckbyokv";
+
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = credenciales;
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            await smtp.SendMailAsync(mensaje);
+        }
         private static string MeetingRequestString(string from, List<string> toUsers, string subject, string desc, string location, DateTime startTime, DateTime endTime, int? eventID = null, bool isCancel = false)
         {
             StringBuilder str = new StringBuilder();

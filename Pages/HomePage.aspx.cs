@@ -34,7 +34,15 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 
                     Consultorio.usuario_logeado = usuario;
 
-                    Response.Redirect("DashboardPage.aspx");
+                    if (Consultorio.usuario_logeado.isProfesional)
+                    {
+                        Response.Redirect("AgendaPage.aspx");
+                    }
+                    else{
+                        Response.Redirect("DashboardPage.aspx");
+                    }
+
+                    
                 }
                 catch (Exception exp)
                 {

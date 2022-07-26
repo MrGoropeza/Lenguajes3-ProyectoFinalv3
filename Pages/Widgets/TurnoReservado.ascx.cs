@@ -1,4 +1,5 @@
 ﻿using Lenguajes3_ProyectoFinalv3.Models;
+using Lenguajes3_ProyectoFinalv3.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
     public partial class TurnoReservado : System.Web.UI.UserControl
     {
         private Usuario profesional;
+
+        public DashboardPage pagina;
         public Usuario Profesional
         {
             get
@@ -58,11 +61,17 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 
         protected async void btn_cancelar_Click(object sender, EventArgs e)
         {
-
+            
             Consultorio.database.removeTurno(this.turno);
-            Consultorio.turnos_logeado =
-                await Consultorio.database
-                .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+            //Consultorio.turnos_logeado =
+            //    await Consultorio.database
+            //    .getTurnosPaciente(Consultorio.usuario_logeado.dni);
+            bool removed = Consultorio.turnos_logeado.Remove(turno);
+            Usuario paciente = await Consultorio.database.getUsuario(turno.pacienteDNI);
+            GMailProvider.mandarInfoTurnoCancelado(Turno, paciente);
+            pagina.cargar_turnos();
+            
+            System.Diagnostics.Debug.WriteLine(removed ? "Turno removido" : "turno no encontrado");
         }
 
         protected void btn_modificar_Click(object sender, EventArgs e)

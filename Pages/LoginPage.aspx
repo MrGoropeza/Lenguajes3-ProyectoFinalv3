@@ -18,6 +18,12 @@
 
                         <!--Form-->
                         <div class="form-login">
+
+                            <div class="alert alert-warning" role="alert"
+                                runat="server" id="advertencia">
+                                
+                            </div>
+
                             <!--number document-->
                             <asp:Label runat="server"
                                 AssociatedControlID="tb_dni"
