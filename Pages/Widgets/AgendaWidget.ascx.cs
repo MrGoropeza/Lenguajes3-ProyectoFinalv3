@@ -25,14 +25,34 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
             }
         }
 
-        private DateTime lunes_semana = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday);
+        private DateTime lunes_semana = DateTime.Today
+            .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+            .AddDays(7 * Consultorio.semanaActualAgenda);
+
+        public DateTime Lunes
+        {
+            set
+            { 
+                lunes_semana = value;
+                vaciar_tabla();
+                turnos();
+            }
+        }
+
+
+        public void setLunes()
+        {
+            lunes_semana = DateTime.Today
+            .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+            .AddDays(7 * Consultorio.semanaActualAgenda);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        async void turnos()
+        public async void turnos()
         {
             var lunes = lunes_semana;
             List<Turno> turnos = new List<Turno>();
@@ -61,7 +81,8 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
                         }
                         else
                         {
-                            if (lunes < DateTime.Now)
+
+                            if (Consultorio.dateTimeFromSlot(i, lunes) < DateTime.Now)
                             {
                                 celda.Text = "Pasado";
                             }
@@ -117,25 +138,29 @@ namespace Lenguajes3_ProyectoFinalv3.Pages.Widgets
 
         protected void btn_anterior_Click(object sender, EventArgs e)
         {
-            if(lunes_semana.Day < DateTime.Today.Day)
-            {
-                lunes_semana = lunes_semana.AddDays(-7);
-            }
+            Consultorio.semanaActualAgenda -= 1;
+            System.Diagnostics.Debug.WriteLine("anterior presionado");
+            System.Diagnostics.Debug.WriteLine(Consultorio.semanaActualAgenda);
+            this.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
             vaciar_tabla();
             turnos();
         }
 
         protected void btn_siguiente_Click(object sender, EventArgs e)
         {
-            //if (lunes_semana.Day >= DateTime.Today.Day)
-            //{
-                lunes_semana = lunes_semana.AddDays(7);
-            //}
-            vaciar_tabla();
-            turnos();
+            Consultorio.semanaActualAgenda += 1;
+            System.Diagnostics.Debug.WriteLine("anterior presionado");
+            System.Diagnostics.Debug.WriteLine(Consultorio.semanaActualAgenda);
+            this.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+            this.vaciar_tabla();
+            this.turnos();
         }
 
-        void vaciar_tabla()
+        public void vaciar_tabla()
         {
             for (int i = 0; i < 16; i++)
             {

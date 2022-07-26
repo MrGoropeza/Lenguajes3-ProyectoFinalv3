@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Firebase.Auth;
+using Lenguajes3_ProyectoFinalv3.Pages.Widgets;
 
 namespace Lenguajes3_ProyectoFinalv3.Models
 {
@@ -26,6 +27,10 @@ namespace Lenguajes3_ProyectoFinalv3.Models
         public static List<Turno> turnos_logeado { get; set; }
 
         public static int turnos_cargados { get; set; }
+
+        public static int semanaActualAgenda = 0;
+
+        public static AgendaWidget agendaActual;
 
         public static void initFirebase()
         {
@@ -87,6 +92,27 @@ namespace Lenguajes3_ProyectoFinalv3.Models
             return respuesta;
         }
 
+        public static DateTime dateTimeFromSlot(int slot, DateTime dia)
+        {
+            
+            DateTime hora = new DateTime(dia.Year
+                , dia.Month
+                , dia.Day
+                , 10, 0, 0);
+
+            DateTime respuesta = hora;
+
+            if (slot >= 0 && slot <= 3)
+            {
+                respuesta = hora.AddMinutes(30 * slot);
+            }
+            else if (slot >= 4 && slot <= 15)
+            {
+                respuesta = hora.AddHours(4).AddMinutes(30 * (slot - 4));
+            }
+            return respuesta;
+        }
+
         public static string hourFromSlot(int slot)
         {
             string respuesta = "";
@@ -102,9 +128,9 @@ namespace Lenguajes3_ProyectoFinalv3.Models
                         + hora.AddMinutes(30 * slot).AddMinutes(30).ToString("HH:mm");
             }else if (slot >= 4 && slot <= 15)
             {
-                respuesta = hora.AddHours(2).AddMinutes(30 * (slot - 4)).ToString("HH:mm")
+                respuesta = hora.AddHours(4).AddMinutes(30 * (slot - 4)).ToString("HH:mm")
                         + " - "
-                        + hora.AddHours(2).AddMinutes(30 * (slot - 4)).AddMinutes(30).ToString("HH:mm");
+                        + hora.AddHours(4).AddMinutes(30 * (slot - 4)).AddMinutes(30).ToString("HH:mm");
             }
             return respuesta;
         }

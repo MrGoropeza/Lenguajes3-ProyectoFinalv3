@@ -12,6 +12,7 @@
     <asp:TableHeaderRow Visible="false">
         <asp:TableCell>
             <asp:LinkButton runat="server"
+                
                 CssClass="btn btn-xsmall"
                 ID="btn_anterior"
                 OnClick="btn_anterior_Click">

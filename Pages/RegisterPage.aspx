@@ -132,6 +132,7 @@
                                         ForeColor="Red"/>
                                     <asp:CustomValidator runat="server"
                                         ValidateEmptyText="true"
+                                        ID="tb_tel_validator"
                                         ControlToValidate="tb_telefono1"
                                         ValidationGroup="register_form"
                                         OnServerValidate="validarTelefono"
@@ -153,7 +154,8 @@
                                         ValidationGroup="register_form"
                                         EnableClientScript="true"
                                         ErrorMessage="Campo Requerido*"
-                                        ForeColor="Red"/>
+                                        ForeColor="Red"
+                                        ID="rfv_fecha"/>
                                     <asp:TextBox runat="server"
                                         lang="es"
                                         TextMode="Date"
@@ -188,6 +190,7 @@
                                         ForeColor="Red"/>
                                     <asp:CustomValidator runat="server"
                                         ValidateEmptyText="true"
+                                        
                                         ID="mail_custom_validator"
                                         ControlToValidate="tb_mail"
                                         ValidationGroup="register_form"

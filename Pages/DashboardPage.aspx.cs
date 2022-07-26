@@ -20,21 +20,12 @@ namespace Lenguajes3_ProyectoFinalv3
             direccion.InnerText = Consultorio.direccion;
             if(Consultorio.usuario_logeado == null)
             {
-                Response.Redirect("HomePage.aspx");
+                Response.Redirect("HomePage.aspx",true);
             }
             else
             {
                 var master = (Dashboard)this.Master;
                 master.setActivePage("dashboard");
-
-
-                if(Consultorio.turnos_logeado == null)
-                {
-                    Consultorio.turnos_logeado =
-                        await Consultorio.database
-                        .getTurnosPaciente(Consultorio.usuario_logeado.dni);
-                }
-
 
                 cargar_turnos();
             }

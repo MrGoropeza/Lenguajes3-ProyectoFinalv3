@@ -34,6 +34,9 @@ namespace Lenguajes3_ProyectoFinalv3.Servicios
         }
         public async void addTurno(Turno turno)
         {
+            System.Diagnostics.Debug.WriteLine("Agregando turno a firebase: \n" +
+                "Slot: " + turno.slot + "\n" +
+                "Fecha: " + turno.fecha.ToString("dd-MM-yyyy"));
             await rtdb.Child("Turnos")
                 .Child(turno.fecha.ToString("dd-MM-yyyy"))
                 .Child(turno.profesionalDNI.ToString())

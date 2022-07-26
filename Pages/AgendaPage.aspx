@@ -6,6 +6,21 @@
         <div class="main-container">
             <h4>Tus sesiones esta semana</h4>
 
+            <asp:LinkButton runat="server"
+                
+                CssClass="btn btn-xsmall"
+                ID="btn_anterior"
+                OnClick="btn_anterior_Click">
+                <i class="fa fa-arrow-left"></i> Semana Anterior
+            </asp:LinkButton>
+
+            <asp:LinkButton runat="server"
+                CssClass="btn btn-xsmall"
+                ID="btn_siguiente"
+                OnClick="btn_siguiente_Click">
+                <i class="fa fa-arrow-right"></i> Semana Siguiente
+            </asp:LinkButton>
+
             <asp:PlaceHolder runat="server" ID="ph_agenda">
 
             </asp:PlaceHolder>

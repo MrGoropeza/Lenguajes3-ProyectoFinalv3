@@ -33,6 +33,24 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
         protected global::System.Web.UI.WebControls.DropDownList dpls_pros;
 
         /// <summary>
+        /// btn_anterior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_anterior;
+
+        /// <summary>
+        /// btn_siguiente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_siguiente;
+
+        /// <summary>
         /// ph_agenda control.
         /// </summary>
         /// <remarks>

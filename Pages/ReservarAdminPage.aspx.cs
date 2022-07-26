@@ -1,19 +1,18 @@
 ﻿using Lenguajes3_ProyectoFinalv3.Models;
-using Lenguajes3_ProyectoFinalv3.Pages.Widgets;
 using Lenguajes3_ProyectoFinalv3.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Lenguajes3_ProyectoFinalv3.Pages
 {
-    public partial class ReservarPage : System.Web.UI.Page
+    public partial class ReservarAdminPage : System.Web.UI.Page
     {
-        public bool div {
+        public bool div
+        {
             get
             {
                 return selector_time.Visible;
@@ -39,10 +38,10 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 
         protected async void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
-                if(Consultorio.usuario_logeado == null)
+                if (Consultorio.usuario_logeado == null)
                 {
                     Response.Redirect("HomePage.aspx", false);
                 }
@@ -54,7 +53,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     Consultorio.profesionales = await Consultorio.database.getProfesionales();
                     foreach (var pro in Consultorio.profesionales)
                     {
-                        if(pro.dni != Consultorio.usuario_logeado.dni)
+                        if (pro.dni != Consultorio.usuario_logeado.dni)
                         {
                             dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
                         }
@@ -73,13 +72,13 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     //                new ListItem(user.nombre + " " + user.apellido
                     //                + ", DNI: " + user.dni, user.dni.ToString()));
                     //        }
-                            
+
                     //    }
                     //}
                     //else
                     //{
-                        //selector_user.Visible = false;
-                        //reg_user.Visible = false;
+                    //selector_user.Visible = false;
+                    //reg_user.Visible = false;
                     //}
 
                 }
@@ -113,12 +112,12 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             //{
             //    rfv_user.IsValid = true;
             //}
-            if ( dpls_validator.IsValid && tb_fecha_validator.IsValid)
+            if (dpls_validator.IsValid && tb_fecha_validator.IsValid)
             {
                 dpls_validator.Visible = false;
                 dpls_validator.IsValid = true;
 
-                if(fecha_selected >= DateTime.Today)
+                if (fecha_selected >= DateTime.Today)
                 {
                     if (fecha_selected.DayOfWeek == DayOfWeek.Sunday || fecha_selected.DayOfWeek == DayOfWeek.Saturday)
                     {
@@ -126,7 +125,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                         advertencia.Visible = true;
                         return;
                     }
-                    else if(fecha_selected == DateTime.Today)
+                    else if (fecha_selected == DateTime.Today)
                     {
                         advertencia.InnerText = "Los turnos solo se pueden reservar con un día de anticipación.";
                         advertencia.Visible = true;
@@ -168,7 +167,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                             ListItem item = rdbtnls_turnos.Items.FindByValue(turno.slot.ToString());
                             rdbtnls_turnos.Items.Remove(item);
                         }
-                        if(rdbtnls_turnos.Items.Count == 0)
+                        if (rdbtnls_turnos.Items.Count == 0)
                         {
                             advertencia.InnerText = "No hay turnos en este día para el profesional.";
                             advertencia.Visible = true;
@@ -240,9 +239,9 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 Where(pro => pro.dni.ToString() == dpls_pros.SelectedItem.Value).First();
             pro_name.InnerText = pro_selected.nombre + " " + pro_selected.apellido;
             pro_title.InnerText = pro_selected.profesional_titulo;
-            if(pro_selected.avatar_link != null)
+            if (pro_selected.avatar_link != null)
             {
-                if(pro_selected.avatar_link != "")
+                if (pro_selected.avatar_link != "")
                 {
                     pro_avatar.Attributes["src"] = pro_selected.avatar_link;
                 }
@@ -279,7 +278,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
             //{
             //    rfv_user.IsValid = true;
             //}
-            
+
             if (dpls_validator.IsValid && tb_fecha_validator.IsValid)
             {
                 Turno nuevo = new Turno();
@@ -295,7 +294,7 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                 int index = 0;
                 Consultorio.turnos_logeado = await Consultorio.database.getTurnosPaciente(Consultorio.usuario_logeado.dni);
 
-                if(Consultorio.turnos_logeado != null)
+                if (Consultorio.turnos_logeado != null)
                 {
                     while (!encontrado_en_mismo_horario && index < Consultorio.turnos_logeado.Count())
                     {
@@ -349,14 +348,14 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                     GMailProvider.mandarInfoTurno(nuevo, Consultorio.usuario_logeado);
                     Response.Redirect("DashboardPage.aspx", false);
                 }
-                
-                
+
+
             }
         }
 
         protected void reg_user_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegisterPage.aspx?a=1",false);
+            Response.Redirect("RegisterPage.aspx?a=1", false);
         }
     }
 }

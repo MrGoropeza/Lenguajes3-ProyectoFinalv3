@@ -11,142 +11,133 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 {
 
 
-    public partial class RegisterPage1
+    public partial class ReservarAdminPage
     {
 
         /// <summary>
-        /// tb_nombre control.
+        /// dpls_validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_nombre;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator dpls_validator;
 
         /// <summary>
-        /// dni_custom_validator control.
+        /// dpls_pros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator dni_custom_validator;
+        protected global::System.Web.UI.WebControls.DropDownList dpls_pros;
 
         /// <summary>
-        /// tb_dni control.
+        /// tb_fecha_validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_dni;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator tb_fecha_validator;
 
         /// <summary>
-        /// rdbtnls_genero control.
+        /// tb_fecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdbtnls_genero;
+        protected global::System.Web.UI.WebControls.TextBox tb_fecha;
 
         /// <summary>
-        /// tb_apellido control.
+        /// btn_agenda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_apellido;
+        protected global::System.Web.UI.WebControls.LinkButton btn_agenda;
 
         /// <summary>
-        /// tb_tel_validator control.
+        /// pro_avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator tb_tel_validator;
+        protected global::System.Web.UI.HtmlControls.HtmlImage pro_avatar;
 
         /// <summary>
-        /// tb_telefono1 control.
+        /// pro_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_telefono1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_name;
 
         /// <summary>
-        /// rfv_fecha control.
+        /// pro_title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_fecha;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pro_title;
 
         /// <summary>
-        /// tb_fecha_nac control.
+        /// advertencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_fecha_nac;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl advertencia;
 
         /// <summary>
-        /// mail_custom_validator control.
+        /// selector_time control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator mail_custom_validator;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selector_time;
 
         /// <summary>
-        /// tb_mail control.
+        /// selector_time_day control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_mail;
+        protected global::System.Web.UI.WebControls.Label selector_time_day;
 
         /// <summary>
-        /// file_up control.
+        /// rdbtnls_turnos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload file_up;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbtnls_turnos;
 
         /// <summary>
-        /// tb_password control.
+        /// btn_reservar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_password;
+        protected global::System.Web.UI.WebControls.Button btn_reservar;
 
         /// <summary>
-        /// tb_repeat_password control.
+        /// ph_calendario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_repeat_password;
-
-        /// <summary>
-        /// btn_register control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_register;
+        protected global::System.Web.UI.WebControls.PlaceHolder ph_calendario;
     }
 }

@@ -11,19 +11,23 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
 {
     public partial class AgendasProsPage : System.Web.UI.Page
     {
+
         protected async void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                if (Consultorio.usuario_logeado == null)
-                {
-                    Response.Redirect("HomePage.aspx", false);
-                }
-                else
-                {
-                    var master = (Dashboard)this.Master;
-                    master.setActivePage("agendas_pros");
+            
 
+            
+            if (Consultorio.usuario_logeado == null)
+            {
+                Response.Redirect("HomePage.aspx", false);
+            }
+            else
+            {
+                var master = (Dashboard)this.Master;
+                master.setActivePage("agendas_pros");
+
+                if (!IsPostBack)
+                {
                     Consultorio.profesionales = await Consultorio.database.getProfesionales();
                     foreach (var pro in Consultorio.profesionales)
                     {
@@ -32,17 +36,55 @@ namespace Lenguajes3_ProyectoFinalv3.Pages
                             dpls_pros.Items.Add(new ListItem(pro.nombre + " " + pro.apellido, pro.dni.ToString()));
                         }
                     }
+                    Consultorio.agendaActual = null;
                 }
+                
             }
+            if(Consultorio.agendaActual != null)
+            {
+                ph_agenda.Controls.Add(Consultorio.agendaActual);
+                btn_anterior.Visible = true;
+                btn_siguiente.Visible = true;
+            }
+            else{
+                btn_anterior.Visible = false;
+                btn_siguiente.Visible = false;
+            }
+                
             
         }
 
         protected void dpls_pros_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AgendaWidget agenda = (AgendaWidget)LoadControl("Widgets/AgendaWidget.ascx");
-            agenda.Profesional = Consultorio.profesionales.Find(usuario => usuario.dni == int.Parse(dpls_pros.SelectedValue));
+            ph_agenda.Controls.Clear();
+            if(dpls_pros.SelectedValue != "0")
+            {
+                Consultorio.agendaActual = (AgendaWidget)LoadControl("Widgets/AgendaWidget.ascx");
+                Consultorio.agendaActual.Profesional = Consultorio.profesionales.Find(usuario => usuario.dni == int.Parse(dpls_pros.SelectedValue));
 
-            ph_agenda.Controls.Add(agenda);
+                Consultorio.agendaActual.EnableViewState = true;
+                ph_agenda.Controls.Add(Consultorio.agendaActual);
+                btn_anterior.Visible = true;
+                btn_siguiente.Visible = true;
+            }
+            
+        }
+
+        protected void btn_anterior_Click(object sender, EventArgs e)
+        {
+            Consultorio.semanaActualAgenda -= 1;
+            Consultorio.agendaActual.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
+            
+        }
+
+        protected void btn_siguiente_Click(object sender, EventArgs e)
+        {
+            Consultorio.semanaActualAgenda += 1;
+            Consultorio.agendaActual.Lunes = DateTime.Today
+                .AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Monday)
+                .AddDays(7 * Consultorio.semanaActualAgenda);
         }
     }
 }

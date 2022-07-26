@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Reservar un Turno" Async="true" Language="C#" MasterPageFile="~/Pages/Dashboard.Master" AutoEventWireup="true" CodeBehind="ReservarPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ReservarPage" %>
-
+﻿<%@ Page Title="Reservar un Turno" Async="true" Language="C#" MasterPageFile="~/Pages/Dashboard.Master" AutoEventWireup="true" CodeBehind="ReservarAdminPage.aspx.cs" Inherits="Lenguajes3_ProyectoFinalv3.Pages.ReservarAdminPage" %>
 
 <asp:Content ID="ContenidoHead" ContentPlaceHolderID="Head" runat="server">
     <title>Reservar un Turno</title>
